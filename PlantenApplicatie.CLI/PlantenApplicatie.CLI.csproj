@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PlantenApplicatie.Data\PlantenApplicatie.Data.csproj" />
     <ProjectReference Include="..\PlantenApplicatie.Domain\PlantenApplicatie.Domain.csproj" />
   </ItemGroup>
 
