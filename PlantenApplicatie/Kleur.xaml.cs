@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -13,18 +14,13 @@ using System.Windows.Shapes;
 namespace PlantenApplicatie
 {
     /// <summary>
-    /// Interaction logic for PlantDetails.xaml
+    /// Interaction logic for Kleur.xaml
     /// </summary>
-    public partial class PlantDetails : Window
+    public partial class Kleur : Window
     {
-        public PlantDetails()
+        public Kleur()
         {
             InitializeComponent();
-        }
-
-        private void btnSluiten_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

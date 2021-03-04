@@ -1,0 +1,48 @@
+﻿<Window x:Class="PlantenApplicatie.Kleur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlantenApplicatie"
+        mc:Ignorable="d"
+        Title="Kleur" Height="150" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Zwart" />
+        <Label Grid.Row="1" Background="Black" Content="Zwart" />
+        <CheckBox Grid.Row="2" />
+        <!--
+        <CheckBox Background="White" Grid.Column="1">Wit</CheckBox>
+        <CheckBox Background="RosyBrown" Grid.Column="2">Roze</CheckBox>
+        <CheckBox Background="Red" Grid.Column="3">Rood</CheckBox>
+        <CheckBox Background="Orange" Grid.Column="4">Oranje</CheckBox>
+        <CheckBox Background="MediumPurple" Grid.Column="5">Lila</CheckBox>
+        <CheckBox Background="Gray" Grid.Column="6">Grijs</CheckBox>
+        <CheckBox Background="Green" Grid.Column="7">Groen</CheckBox>
+        <CheckBox Background="Yellow" Grid.Column="8">Geel</CheckBox>
+        <CheckBox Background="Blue" Grid.Column="9">Blauw</CheckBox>
+        <CheckBox Background="Violet" Grid.Column="10">Violet</CheckBox>
+        <CheckBox Background="Purple" Grid.Column="11">Paars</CheckBox>
+        <CheckBox Background="Brown" Grid.Column="12">Bruin</CheckBox>
+        -->
+    </Grid>
+</Window>

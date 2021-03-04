@@ -23,7 +23,15 @@ namespace PlantenApplicatie
             lvPlanten.ItemsSource = null;
         }
 
-        private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
+        private void txtPlantnaam_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                MessageBox.Show("abc");
+            }
+        }
+
+        private void btnDetailsPlant_Click_1(object sender, RoutedEventArgs e)
         {
             PlantDetails plantDetails = new PlantDetails();
             plantDetails.Show();
