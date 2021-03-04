@@ -75,7 +75,7 @@ namespace PlantenApplicatie.Data
 
         public string RemoveAccentCharacters(string originalText)
         {
-            var newText = String.Empty;
+            var newText = string.Empty;
             
             foreach (var c in originalText.Normalize(NormalizationForm.FormD)
                 .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark))
