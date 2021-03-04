@@ -14,7 +14,7 @@ namespace PlantenApplicatie.CLI
         {
             _plantenDao = PlantenDao.Instance;
 
-            PrintPlanten(_plantenDao.GetPlantenByVariant(""));
+            PrintPlanten(_plantenDao.GetPlantenByName("vinca minor"));
         }
 
         private static void PrintPlanten(List<Plant> planten)
@@ -22,10 +22,10 @@ namespace PlantenApplicatie.CLI
             foreach (var plant in planten)
             {
                 Console.WriteLine($"{plant.Fgsv}:");
-                Console.WriteLine($"\tFamilie: {plant.Familie}");
+                /*Console.WriteLine($"\tFamilie: {plant.Familie}");
                 Console.WriteLine($"\tGeslacht: {plant.Geslacht}");
                 Console.WriteLine($"\tSoort: {plant.Soort}");
-                Console.WriteLine($"\tVariant: {plant.Variant}\n");
+                Console.WriteLine($"\tVariant: {plant.Variant}\n");*/
             }
         }
     }

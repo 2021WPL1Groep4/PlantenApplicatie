@@ -31,45 +31,41 @@ namespace PlantenApplicatie.Data
         
         public List<Plant> GetPlantenByName(string name)
         {
-            return _context.Plant.Where(p => 
-                    p.Fgsv.ToLower().Replace("'", "")
-                        .Contains(name.Trim().ToLower().Replace("'", "")))
+
+            return GetPlanten().Where(p =>
+                    (p.Fgsv is not null && Parse(p.Fgsv).Contains(Parse(name))))
                 .OrderBy(p => p.Fgsv)
                 .ToList();
         }
 
         public List<Plant> GetPlantenByFamily(string family)
         {
-            return _context.Plant.Where(p =>
-                    p.Familie.ToLower()
-                        .Contains(family.Trim().ToLower()))
+            return GetPlanten().Where(p =>
+                    (p.Familie is not null && Parse(p.Familie).Contains(Parse(family))))
                 .OrderBy(p => p.Familie)
                 .ToList();
         }
 
-        public List<Plant> GetPlantenByGeslacht(string name)
+        public List<Plant> GetPlantenByGeslacht(string gender)
         {
-            return _context.Plant.Where(p => 
-                    p.Geslacht.ToLower()
-                        .Contains(name.Trim().ToLower().Replace("'","")))
+            return GetPlanten().Where(p =>
+                    (p.Geslacht is not null && Parse(p.Geslacht).Contains(gender)))
                 .OrderBy(p => p.Geslacht)
                 .ToList();
         }
 
-        public List<Plant> GetPlantenBySoort(string name)
+        public List<Plant> GetPlantenBySoort(string kind)
         {
-            return _context.Plant.Where(p => 
-                    p.Soort.ToLower()
-                        .Contains(name.Trim().ToLower().Replace("'", "")))
+            return GetPlanten().Where(p =>
+                    (p.Soort is not null && Parse(p.Soort).Contains(kind)))
                 .OrderBy(p => p.Soort)
                 .ToList();
         }
 
-        public List<Plant> GetPlantenByVariant(string name)
+        public List<Plant> GetPlantenByVariant(string variant)
         {
-            return _context.Plant.Where(p => 
-                    p.Variant.ToLower().Replace("'", "")
-                        .Contains(name.Trim().ToLower().Replace("'", "")))
+            return GetPlanten().Where(p =>
+                    (p.Variant is not null && Parse(p.Variant).Contains(Parse(variant))))
                 .OrderBy(p => p.Variant)
                 .ToList();
         }
