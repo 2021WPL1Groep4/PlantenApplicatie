@@ -56,10 +56,15 @@ namespace PlantenApplicatie.Domain
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            /*
+             * To be able to use the PlantenContext, you will need to create a public class in PlantenApplicatie.Data
+             * And name it ConnectionConfig and give it a static public ConnectionString class member with the
+             * string config to connect to SQLServer
+             */
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=LAPTOP-3SEJN825\\VIVES;Database=Planten2021;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(ConnectionConfig.ConnectionString);
             }
         }
 
