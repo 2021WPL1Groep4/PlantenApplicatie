@@ -31,7 +31,6 @@ namespace PlantenApplicatie.Data
         
         public List<Plant> GetPlantenByName(string name)
         {
-
             return GetPlanten().Where(p =>
                     (p.Fgsv is not null && Parse(p.Fgsv).Contains(Parse(name))))
                 .OrderBy(p => p.Fgsv)
@@ -46,18 +45,18 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        public List<Plant> GetPlantenByGeslacht(string gender)
+        public List<Plant> GetPlantenByGeslacht(string genus)
         {
             return GetPlanten().Where(p =>
-                    (p.Geslacht is not null && Parse(p.Geslacht).Contains(gender)))
+                    (p.Geslacht is not null && Parse(p.Geslacht).Contains(genus)))
                 .OrderBy(p => p.Geslacht)
                 .ToList();
         }
 
-        public List<Plant> GetPlantenBySoort(string kind)
+        public List<Plant> GetPlantenBySoort(string species)
         {
             return GetPlanten().Where(p =>
-                    (p.Soort is not null && Parse(p.Soort).Contains(kind)))
+                    (p.Soort is not null && Parse(p.Soort).Contains(species)))
                 .OrderBy(p => p.Soort)
                 .ToList();
         }
