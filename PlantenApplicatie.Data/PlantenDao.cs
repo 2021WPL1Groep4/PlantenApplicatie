@@ -29,7 +29,8 @@ namespace PlantenApplicatie.Data
             return _context.Plant.ToList();
         }
         
-        public List<Plant> GetPlantenByName(string name) {
+        public List<Plant> GetPlantenByName(string name)
+        {
             return _context.Plant.Where(p => 
                     p.Fgsv.ToLower().Replace("'", "")
                         .Contains(name.Trim().ToLower().Replace("'", "")))
@@ -73,7 +74,12 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        public string RemoveAccentCharacters(string originalText)
+        private static string Parse(string text)
+        {
+            return RemoveAccentCharacters(text.Trim().ToLower().Replace("'", ""));
+        }
+
+        private static string RemoveAccentCharacters(string originalText)
         {
             var newText = string.Empty;
             
