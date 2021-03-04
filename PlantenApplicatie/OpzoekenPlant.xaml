@@ -25,30 +25,14 @@
                     <Label Content="Soort :" Canvas.Top="60" />
                     <ComboBox x:Name="cmbSoort" Width="200" Canvas.Top="65" Canvas.Left="80"  />
                     <Label Content="Variant :" Canvas.Top="60" Canvas.Left="350" />
-                    <ComboBox x:Name="cmbVariant" Width="200" Canvas.Top="65" Canvas.Left="450"  />
                     <!-- vierde rij-->
                     <Button Content="Zoeken" Canvas.Top="107" Width="80"/>
-                    <ComboBox Width="125" Canvas.Top="65" Canvas.Left="80"  />
-                    <Label Content="Variant :" Canvas.Top="60" Canvas.Left="250" />
-                    <TextBox Height="19" Canvas.Left="352" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123"/>
+                    <TextBox Height="19" Canvas.Left="450" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123"/>
                 </Canvas>
             </GroupBox>
-            <GroupBox Header="Resultaten" Height="260">
+            <GroupBox Header="Resultaten" Height="265">
                 <Canvas>
                     <ListView x:Name="lvPlanten" Canvas.Left="10" Height="220" Width="750">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Plantnaam" Width="70" DisplayMemberBinding="{Binding Plantnaam}" />
-                                <GridViewColumn Header="Familienaam" Width="70" DisplayMemberBinding="{Binding Familienaam}" />
-                                <GridViewColumn Header="Groep" Width="50" DisplayMemberBinding="{Binding Groep}" />
-                                <GridViewColumn Header="Familie" Width="50" DisplayMemberBinding="{Binding Familie}" />
-                                <GridViewColumn Header="Geslacht" Width="150" DisplayMemberBinding="{Binding Geslacht}" />
-                                <GridViewColumn Header="Soort" Width="120" DisplayMemberBinding="{Binding Soort}" />
-                                <GridViewColumn Header="Variant" Width="50" DisplayMemberBinding="{Binding Variant}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    <ListView Canvas.Left="10" x:Name="lvPlanten" Height="220" Width="700">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Plantnaam" Width="70" DisplayMemberBinding="{Binding Plantnaam}" />
@@ -68,15 +52,9 @@
             <Grid Height="50">
                 <Canvas>
                     <Button x:Name="btnDetailsPlant" Canvas.Top="15" Canvas.Left="20" Width="150" Content="Details plant bekijken" Click="btnDetailsPlant_Click_1"/>
-                    <Button Canvas.Top="0" x:Name="btnDetailsPlant" Content="Details plant" HorizontalAlignment="Left" Margin="670,368,0,0" VerticalAlignment="Top" Width="76" Click="btnDetailsPlant_Click"/>
+
                 </Canvas>
             </Grid>
-
-            </GroupBox>
-
         </StackPanel>
-
-
-
     </Grid>
 </Window>

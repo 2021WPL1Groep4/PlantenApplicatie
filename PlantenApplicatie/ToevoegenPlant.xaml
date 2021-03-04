@@ -30,7 +30,7 @@
         <GroupBox Header="Geselecteerde eigenschappen" HorizontalAlignment="Left" Height="263" Margin="521,155,0,0" VerticalAlignment="Top" Width="279">
             <Canvas HorizontalAlignment="Left" Height="241" Margin="10,0,0,0" VerticalAlignment="Center" Width="259">
                 <ListBox Height="191" Width="242" Canvas.Top="10"/>
-                <Button Content="Verwijder eigenschap" Height="25" Canvas.Left="10" Canvas.Top="206" Width="120" Click="Button_Click"/>
+                <Button Content="Verwijder eigenschap" Height="25" Canvas.Left="10" Canvas.Top="206" Width="120"/>
             </Canvas>
         </GroupBox>
 
