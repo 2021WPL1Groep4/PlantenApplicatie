@@ -9,12 +9,12 @@ namespace PlantenApplicatie.Data
 {
     public class PlantenDao
     {
-        private static readonly PlantenDao _instance;
+        private static readonly PlantenDao DaoInstance;
         private PlantenContext _context;
 
         static PlantenDao()
         {
-            _instance = new PlantenDao();
+            DaoInstance = new PlantenDao();
         }
 
         private PlantenDao()
@@ -22,7 +22,7 @@ namespace PlantenApplicatie.Data
             _context = new PlantenContext();
         }
 
-        public static PlantenDao Instance => _instance;
+        public static PlantenDao Instance => DaoInstance;
 
         public List<Plant> GetPlanten()
         {
