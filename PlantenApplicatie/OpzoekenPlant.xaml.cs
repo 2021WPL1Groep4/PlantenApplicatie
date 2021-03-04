@@ -20,7 +20,6 @@ namespace PlantenApplicatie
         public OpzoekenPlant()
         {
             InitializeComponent();
-            lvPlanten.ItemsSource = null;
         }
 
         private void txtPlantnaam_KeyDown(object sender, KeyEventArgs e)
