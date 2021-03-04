@@ -33,5 +33,33 @@ namespace PlantenApplicatie.Data
                 .OrderBy(p => p.Plantnaam)
                 .ToList();
         }
+
+        public List<Planten2021> GetPlantenByGeslacht(string name)
+        {
+            return _context.Planten2021.Where(p => p
+                .Geslacht.ToLower()
+                .Contains(name.Trim().ToLower().Replace("'","")))
+                .OrderBy(p => p.Geslacht)
+                .ToList();
+        }
+
+        public List<Planten2021> GetPlantenBySoort(string name)
+        {
+            return _context.Planten2021.Where(p => p
+                .Soort.ToLower()
+                .Contains(name.Trim().ToLower().Replace("'", "")))
+                .OrderBy(p => p.Soort)
+                .ToList();
+        }
+
+        public List<Planten2021> GetPlantenByVariant(string name)
+        {
+            return _context.Planten2021.Where(p => p
+                .Variant.ToLower().Replace("'", "")
+                .Contains(name.Trim().ToLower().Replace("'", "")))
+                .OrderBy(p => p.Variant)
+                .ToList();
+        }
+
     }
 }
