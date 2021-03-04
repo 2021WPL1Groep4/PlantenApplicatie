@@ -13,24 +13,24 @@
                     <!-- eerste rij -->
                     <Label Canvas.Top="0" Content="Plantnaam :"/>
                     <TextBox Canvas.Top="5" Canvas.Left="80" Text="Typ een plantnaam" />
-                    <Label Canvas.Top="0" Canvas.Left="250" Content="Familie(naam) :"/>
-                    <ComboBox  Canvas.Top="5" Canvas.Left="350" Width="125" />
+                    <Label Canvas.Top="0" Canvas.Left="350" Content="Familie(naam) :"/>
+                    <ComboBox  Canvas.Top="5" Canvas.Left="450" Width="200" />
                     <!-- tweede rij -->
                     <Label Content="Groep :" Canvas.Top="30" />
-                    <ComboBox Width="125" Canvas.Top="35" Canvas.Left="80"  />
-                    <Label Content="Geslacht :" Canvas.Top="30" Canvas.Left="250" />
-                    <ComboBox Width="125" Canvas.Top="35" Canvas.Left="350"  />
+                    <ComboBox Width="200" Canvas.Top="35" Canvas.Left="80"  />
+                    <Label Content="Geslacht :" Canvas.Top="30" Canvas.Left="350" />
+                    <ComboBox Width="200" Canvas.Top="35" Canvas.Left="450"  />
                     <!-- derde rij -->
 
                     <Label Content="Soort :" Canvas.Top="60" />
-                    <ComboBox Width="125" Canvas.Top="65" Canvas.Left="80"  />
-                    <Label Content="Variant :" Canvas.Top="60" Canvas.Left="250" />
-                    <ComboBox Width="125" Canvas.Top="65" Canvas.Left="350"  />
+                    <ComboBox Width="200" Canvas.Top="65" Canvas.Left="80"  />
+                    <Label Content="Variant :" Canvas.Top="60" Canvas.Left="350" />
+                    <ComboBox Width="200" Canvas.Top="65" Canvas.Left="450"  />
                 </Canvas>
             </GroupBox>
             <GroupBox Header="Resultaten" Height="260">
                 <Canvas>
-                    <ListView Canvas.Left="10" x:Name="lvPlanten" Height="220" Width="700">
+                    <ListView Canvas.Left="10" x:Name="lvPlanten" Height="200" Width="700">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Plantnaam" Width="70" DisplayMemberBinding="{Binding Plantnaam}" />
@@ -45,11 +45,14 @@
                 </ListView>
                 </Canvas>
             </GroupBox>
-            <GroupBox Header="Details plant">
+            
+            <!-- knop details plant -->
+            <Grid Height="50">
                 <Canvas>
-                <Button Canvas.Top="0" x:Name="btnDetailsPlant" Content="Details plant" HorizontalAlignment="Left" Margin="670,368,0,0" VerticalAlignment="Top" Width="76" Click="btnDetailsPlant_Click"/>
+                <Button Canvas.Top="15" Canvas.Left="20" Width="150" Content="Details plant bekijken"/>
                 </Canvas>
-            </GroupBox>
+            </Grid>
+            
         </StackPanel>
         
 
