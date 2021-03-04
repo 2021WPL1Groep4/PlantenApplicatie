@@ -16,14 +16,25 @@ namespace PlantenApplicatie.CLI
 
             // PrintPlanten(_plantenDao.GetPlanten());
 
-            PrintPlanten(_plantenDao.GetPlantenByName("hakonechloa"));
+            //PrintPlanten(_plantenDao.GetPlantenByName("hakonechloa"));
+
+            PrintPlanten(_plantenDao.GetPlantenByName("baptisia"));
+
+            _plantenDao.GetPlantenByName("baptisia");
+
+            //PrintPlanten(_plantenDao.GetPlantenByFamily("fabaceae"));
         }
 
         static void PrintPlanten(List<Planten2021> planten)
         {
             foreach (var plant in planten)
             {
-                Console.WriteLine($"The plant name is: {plant.Plantnaam}");
+                Console.WriteLine($"{plant.Plantnaam}:");
+                Console.WriteLine($"\tFamilie: {plant.Familie}");
+                Console.WriteLine($"\tGroep: {plant.Groep}");
+                Console.WriteLine($"\tGeslacht: {plant.Geslacht}");
+                Console.WriteLine($"\tSoort: {plant.Soort}");
+                Console.WriteLine($"\tVariant: {plant.Variant}\n");
             }
         }
     }
