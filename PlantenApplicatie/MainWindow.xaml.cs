@@ -49,5 +49,10 @@ namespace PlantenApplicatie
             ToevoegenPlant toevoegenPlant = new ToevoegenPlant();
             toevoegenPlant.Show();
         }
+
+        private void menu_Item_Wijzigen_Plant_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

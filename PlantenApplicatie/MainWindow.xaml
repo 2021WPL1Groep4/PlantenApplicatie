@@ -12,6 +12,7 @@
                 <MenuItem Header="Plant">
                     <MenuItem x:Name="menu_item_Opzoeken_plant" Header="Opzoeken plant" Click="menu_item_Opzoeken_plant_Click"/>
                     <MenuItem x:Name="menu_Item_Toevoegen_Plant" Header="Toevoegen plant" Click="menu_Item_Toevoegen_Plant_Click"/>
+                    <MenuItem x:Name="menu_Item_Wijzigen_Plant" Header="Wijzigen plant" Click="menu_Item_Wijzigen_Plant_Click"/>
                     <Separator />
                     <MenuItem Header="Exporteren">
                         <MenuItem Header="Naar Excel"/>

@@ -13,11 +13,11 @@
                     <!-- eerste rij -->
                     <Label Canvas.Top="0" Content="Plantnaam :"/>
                     <TextBox x:Name="txtPlantnaam" Width="200" Canvas.Top="5" Canvas.Left="80" Text="Typ een plantnaam" KeyDown="txtPlantnaam_KeyDown"  />
-                    <Label Canvas.Top="0" Canvas.Left="350" Content="Familie(naam) :"/>
+                    <Label Canvas.Top="0" Canvas.Left="350" Content="Familie :"/>
                     <ComboBox x:Name="cmbFamilie" Canvas.Top="5" Canvas.Left="450" Width="200" />
                     <!-- tweede rij -->
-                    <Label Content="Groep :" Canvas.Top="30" />
-                    <ComboBox x:Name="cmbGroep" Width="200" Canvas.Top="35" Canvas.Left="80"  />
+                    <Label Content="Type :" Canvas.Top="30" />
+                    <ComboBox x:Name="cmbType" Width="200" Canvas.Top="35" Canvas.Left="80"  />
                     <Label Content="Geslacht :" Canvas.Top="30" Canvas.Left="350" />
                     <ComboBox x:Name="cmbGeslacht" Width="200" Canvas.Top="35" Canvas.Left="450"  />
                     <!-- derde rij -->
@@ -26,8 +26,10 @@
                     <ComboBox x:Name="cmbSoort" Width="200" Canvas.Top="65" Canvas.Left="80"  />
                     <Label Content="Variant :" Canvas.Top="60" Canvas.Left="350" />
                     <!-- vierde rij-->
-                    <Button Content="Zoeken" Canvas.Top="107" Width="80"/>
+                    <Button Content="Zoeken" Canvas.Top="107" Width="80" Canvas.Left="688"/>
                     <TextBox Height="19" Canvas.Left="450" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123"/>
+                    <Label Canvas.Top="99" Content="Naam:"/>
+                    <TextBox x:Name="txtNLNaam" Width="200" Canvas.Top="103" Canvas.Left="80" Text="Typ de nederlandse naam" KeyDown="txtPlantnaam_KeyDown"  />
                 </Canvas>
             </GroupBox>
             <GroupBox Header="Resultaten" Height="265">
@@ -36,12 +38,12 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Plantnaam" Width="70" DisplayMemberBinding="{Binding Plantnaam}" />
-                                <GridViewColumn Header="Familienaam" Width="70" DisplayMemberBinding="{Binding Familienaam}" />
-                                <GridViewColumn Header="Groep" Width="50" DisplayMemberBinding="{Binding Groep}" />
-                                <GridViewColumn Header="Familie" Width="50" DisplayMemberBinding="{Binding Familie}" />
-                                <GridViewColumn Header="Geslacht" Width="150" DisplayMemberBinding="{Binding Geslacht}" />
-                                <GridViewColumn Header="Soort" Width="120" DisplayMemberBinding="{Binding Soort}" />
+                                <GridViewColumn Header="Type" Width="70" DisplayMemberBinding="{Binding Type}" />
+                                <GridViewColumn Header="Familie" Width="70" DisplayMemberBinding="{Binding Familie}" />
+                                <GridViewColumn Header="Geslacht" Width="100" DisplayMemberBinding="{Binding Geslacht}" />
+                                <GridViewColumn Header="Soort" Width="100" DisplayMemberBinding="{Binding Soort}" />
                                 <GridViewColumn Header="Variant" Width="50" DisplayMemberBinding="{Binding Variant}" />
+                                <GridViewColumn Header="Nederlandse naam" Width="150" DisplayMemberBinding="{Binding NLnaam}" />
                             </GridView>
                         </ListView.View>
                     </ListView>

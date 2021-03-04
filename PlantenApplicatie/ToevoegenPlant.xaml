@@ -10,20 +10,24 @@
         <GroupBox Header="Naam en toebehoren" Margin="0,0,0,284">
             <Canvas Margin="10">
                 <!-- eerste rij -->
-                <Label Canvas.Top="0" Canvas.Left="250" Content="Familie(naam) :"/>
-                <ComboBox  Canvas.Top="5" Canvas.Left="350" Width="125" />
+                <Label Canvas.Top="-2" Canvas.Left="-1" Content="Familie:"/>
+                <ComboBox  Canvas.Top="-2" Canvas.Left="80" Width="125" />
                 <!-- tweede rij -->
-                <Label Content="Groep :" Canvas.Top="30" />
+                <Label Content="Type :" Canvas.Top="30" />
                 <ComboBox Width="125" Canvas.Top="35" Canvas.Left="80"  />
-                <Label Content="Geslacht :" Canvas.Top="30" Canvas.Left="250" />
-                <ComboBox Width="125" Canvas.Top="35" Canvas.Left="350"  />
+                <Label Content="Geslacht :" Canvas.Top="-4" Canvas.Left="246" />
+                <ComboBox Width="124" Canvas.Left="312" Canvas.Top="-2"  />
                 <!-- derde rij -->
 
                 <Label Content="Soort :" Canvas.Top="60" />
                 <ComboBox Width="125" Canvas.Top="65" Canvas.Left="80"  />
-                <Label Content="Variant :" Canvas.Top="60" Canvas.Left="250" />
+                <Label Content="Variant :" Canvas.Top="25" Canvas.Left="246" />
+                <Label Content="NL naam:" Canvas.Top="71" Canvas.Left="246" />
+                <TextBox Height="28" Canvas.Left="312" Canvas.Top="32" Text="TextBox" TextWrapping="Wrap" Width="125"/>
                 <Button Content="Voeg Plant toe aan database" Height="28" Canvas.Left="598" Canvas.Top="10" Width="160"/>
-                <TextBox Height="28" Canvas.Left="350" Canvas.Top="69" Text="TextBox" TextWrapping="Wrap" Width="125"/>
+                <TextBox Height="28" Canvas.Left="312" Canvas.Top="76" Text="TextBox" TextWrapping="Wrap" Width="125"/>
+                <Label Content="Resultaat: " Canvas.Left="534" Canvas.Top="55"/>
+                <Label Content="Berguntia white chocolate " Canvas.Left="598" Canvas.Top="55"/>
             </Canvas>
         </GroupBox>
 
