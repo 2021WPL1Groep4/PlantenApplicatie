@@ -25,5 +25,13 @@ namespace PlantenApplicatie.Data
         {
             return _context.Planten2021.ToList();
         }
+        
+        public List<Planten2021> GetPlantenByName(string name) {
+            return _context.Planten2021.Where(p => p
+                .Plantnaam.ToLower().Replace("'", "")
+                .Contains(name.Trim().ToLower().Replace("'", "")))
+                .OrderBy(p => p.Plantnaam)
+                .ToList();
+        }
     }
 }

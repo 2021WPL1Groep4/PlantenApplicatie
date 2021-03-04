@@ -1,6 +1,7 @@
 ﻿using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PlantenApplicatie.CLI
@@ -13,14 +14,16 @@ namespace PlantenApplicatie.CLI
         {
             _plantenDao = PlantenDao.Instance;
 
-            PrintPlanten();
+            // PrintPlanten(_plantenDao.GetPlanten());
+
+            PrintPlanten(_plantenDao.GetPlantenByName("hakonechloa"));
         }
 
-        static void PrintPlanten()
+        static void PrintPlanten(List<Planten2021> planten)
         {
-            foreach (var plant in _plantenDao.GetPlanten())
+            foreach (var plant in planten)
             {
-                Console.WriteLine($"The plant name is {plant.Plantnaam}");
+                Console.WriteLine($"The plant name is: {plant.Plantnaam}");
             }
         }
     }
