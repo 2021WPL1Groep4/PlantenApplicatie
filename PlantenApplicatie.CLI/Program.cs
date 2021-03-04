@@ -14,16 +14,15 @@ namespace PlantenApplicatie.CLI
         {
             _plantenDao = PlantenDao.Instance;
 
-            PrintPlanten(_plantenDao.GetPlanten());
+            PrintPlanten(_plantenDao.GetPlantenByVariant(""));
         }
 
-        static void PrintPlanten(List<Planten2021> planten)
+        private static void PrintPlanten(List<Plant> planten)
         {
             foreach (var plant in planten)
             {
-                Console.WriteLine($"{plant.Plantnaam}:");
+                Console.WriteLine($"{plant.Fgsv}:");
                 Console.WriteLine($"\tFamilie: {plant.Familie}");
-                Console.WriteLine($"\tGroep: {plant.Groep}");
                 Console.WriteLine($"\tGeslacht: {plant.Geslacht}");
                 Console.WriteLine($"\tSoort: {plant.Soort}");
                 Console.WriteLine($"\tVariant: {plant.Variant}\n");

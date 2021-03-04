@@ -24,49 +24,49 @@ namespace PlantenApplicatie.Data
 
         public static PlantenDao Instance => _instance;
 
-        public List<Planten2021> GetPlanten()
+        public List<Plant> GetPlanten()
         {
-            return _context.Planten2021.ToList();
+            return _context.Plant.ToList();
         }
         
-        public List<Planten2021> GetPlantenByName(string name) {
-            return _context.Planten2021.Where(p => 
-                    p.Plantnaam.ToLower().Replace("'", "")
+        public List<Plant> GetPlantenByName(string name) {
+            return _context.Plant.Where(p => 
+                    p.Fgsv.ToLower().Replace("'", "")
                         .Contains(name.Trim().ToLower().Replace("'", "")))
-                .OrderBy(p => p.Plantnaam)
+                .OrderBy(p => p.Fgsv)
                 .ToList();
         }
 
-        public List<Planten2021> GetPlantenByFamily(string family)
+        public List<Plant> GetPlantenByFamily(string family)
         {
-            return _context.Planten2021.Where(p =>
+            return _context.Plant.Where(p =>
                     p.Familie.ToLower()
                         .Contains(family.Trim().ToLower()))
                 .OrderBy(p => p.Familie)
                 .ToList();
         }
 
-        public List<Planten2021> GetPlantenByGeslacht(string name)
+        public List<Plant> GetPlantenByGeslacht(string name)
         {
-            return _context.Planten2021.Where(p => 
+            return _context.Plant.Where(p => 
                     p.Geslacht.ToLower()
                         .Contains(name.Trim().ToLower().Replace("'","")))
                 .OrderBy(p => p.Geslacht)
                 .ToList();
         }
 
-        public List<Planten2021> GetPlantenBySoort(string name)
+        public List<Plant> GetPlantenBySoort(string name)
         {
-            return _context.Planten2021.Where(p => 
+            return _context.Plant.Where(p => 
                     p.Soort.ToLower()
                         .Contains(name.Trim().ToLower().Replace("'", "")))
                 .OrderBy(p => p.Soort)
                 .ToList();
         }
 
-        public List<Planten2021> GetPlantenByVariant(string name)
+        public List<Plant> GetPlantenByVariant(string name)
         {
-            return _context.Planten2021.Where(p => 
+            return _context.Plant.Where(p => 
                     p.Variant.ToLower().Replace("'", "")
                         .Contains(name.Trim().ToLower().Replace("'", "")))
                 .OrderBy(p => p.Variant)
