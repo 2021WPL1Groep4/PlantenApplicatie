@@ -7,20 +7,18 @@ namespace PlantenApplicatie.CLI
 {
     class Program
     {
-        private static PlantenContext _context;
+        private static PlantenDao _plantenDao;
 
         static void Main(string[] args)
         {
-            _context = new PlantenContext();
+            _plantenDao = PlantenDao.Instance;
 
             PrintPlanten();
         }
 
         static void PrintPlanten()
         {
-            var planten = _context.Planten2021.ToList();
-            
-            foreach (var plant in planten)
+            foreach (var plant in _plantenDao.GetPlanten())
             {
                 Console.WriteLine($"The plant name is {plant.Plantnaam}");
             }
