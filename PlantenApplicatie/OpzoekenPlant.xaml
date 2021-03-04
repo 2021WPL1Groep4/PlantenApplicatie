@@ -1,0 +1,47 @@
+﻿<Window x:Class="PlantenApplicatie.OpzoekenPlant"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlantenApplicatie"
+        mc:Ignorable="d"
+        Title="OpzoekenPlant" Height="850" Width="800">
+    <Grid>
+        <StackPanel>
+            <GroupBox Header="Kenmerken" Height="200">
+                <Canvas Margin="10">
+                    <Label Canvas.Top="0" Content="Plantnaam :"/>
+                    <TextBox Canvas.Top="5" Canvas.Left="80" Text="Typ een plantnaam" />
+                    <Label Canvas.Top="25" Content="Familie :"/>
+                    <ComboBox Width="125" Canvas.Top="30" Canvas.Left="80"  />
+                    <Label Content="Label" Canvas.Left="10" Canvas.Top="61"/>
+                </Canvas>
+            </GroupBox>
+            <GroupBox Header="User Defined Fields">
+                <TextBlock Text="Tags:"/>
+
+            </GroupBox>
+        </StackPanel>
+
+
+        <!--<StackPanel Orientation="Vertical">
+        <Button x:Name="btnDetailsPlant" Content="Details plant" HorizontalAlignment="Left" Margin="674,350,0,0" VerticalAlignment="Top" Width="76" Click="btnDetailsPlant_Click"/>
+        <ListView x:Name="lvPlanten" Height="150" Width="700">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="20" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Plantnaam" Width="70" DisplayMemberBinding="{Binding Plantnaam}" />
+                    <GridViewColumn Header="Familienaam" Width="70" DisplayMemberBinding="{Binding Familienaam}" />
+                    <GridViewColumn Header="Groep" Width="50" DisplayMemberBinding="{Binding Groep}" />
+                    <GridViewColumn Header="Familie" Width="50" DisplayMemberBinding="{Binding Familie}" />
+                    <GridViewColumn Header="Geslacht" Width="150" DisplayMemberBinding="{Binding Geslacht}" />
+                    <GridViewColumn Header="Soort" Width="120" DisplayMemberBinding="{Binding Soort}" />
+                    <GridViewColumn Header="Variant" Width="50" DisplayMemberBinding="{Binding Variant}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+            <Label Content="Selecteer een plant" HorizontalAlignment="Left" Margin="50,90,0,0" VerticalAlignment="Top"/>
+        </StackPanel>-->
+
+    </Grid>
+</Window>

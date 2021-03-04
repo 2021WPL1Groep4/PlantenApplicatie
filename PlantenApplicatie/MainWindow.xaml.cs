@@ -24,5 +24,21 @@ namespace PlantenApplicatie
         {
             InitializeComponent();
         }
+
+        private void menu_item_Info_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Dit programma is ontworpen door groep 4:\n\rJim, Zakaria, Lily, Liam en Davy", "Project planten", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void menu_item_Sluiten_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void menu_item_Opzoeken_plant_Click(object sender, RoutedEventArgs e)
+        {
+            OpzoekenPlant opzoekenPlant = new OpzoekenPlant();
+            opzoekenPlant.Show();
+        }
     }
 }

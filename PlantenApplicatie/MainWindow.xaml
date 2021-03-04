@@ -7,6 +7,34 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Plant">
+                    <MenuItem x:Name="menu_item_Opzoeken_plant" Header="Opzoeken plant" Click="menu_item_Opzoeken_plant_Click"/>
+                    <MenuItem Header="Toevoegen plant"/>
+                    <Separator />
+                    <MenuItem Header="Exporteren">
+                        <MenuItem Header="Naar Excel"/>
+                        <MenuItem Header="Naar PDF"/>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem x:Name="menu_item_Sluiten" Header="Sluiten" Click="menu_item_Sluiten_Click" />
+                </MenuItem>
+                <MenuItem Header="Abio">
+                    <MenuItem Header="Beheer abio_bezonning"/>
+                    <MenuItem Header="Beheer abio grondsoort"/>
+                    <MenuItem Header="Beheer abio habitat"/>
+                    <MenuItem Header="Beheer abio reactie antagonische omg"/>
+                    <MenuItem Header="Beheer abio vochtbehoefte"/>
+                    <MenuItem Header="Beheer abio voedingsbehoefte"/>
+                    <Separator />
+                    <MenuItem Header="Beheer abiotiek"/>
+                    <MenuItem Header="Beheer abiotiek multi"/>
+                </MenuItem>
+                <MenuItem Header="Over">
+                    <MenuItem Header="Info" x:Name="menu_item_Info" Click="menu_item_Info_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
     </Grid>
 </Window>
