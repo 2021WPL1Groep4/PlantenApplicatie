@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 using PlantenApplicatie.Domain;
 
 namespace PlantenApplicatie.Data
@@ -70,5 +73,17 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
+        public string RemoveAccentCharacters(string originalText)
+        {
+            var newText = String.Empty;
+            
+            foreach (var c in originalText.Normalize(NormalizationForm.FormD)
+                .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark))
+            {
+                newText += c;
+            }
+
+            return newText;
+        }
     }
 }

@@ -14,15 +14,7 @@ namespace PlantenApplicatie.CLI
         {
             _plantenDao = PlantenDao.Instance;
 
-            // PrintPlanten(_plantenDao.GetPlanten());
-
-            //PrintPlanten(_plantenDao.GetPlantenByName("hakonechloa"));
-
-            PrintPlanten(_plantenDao.GetPlantenByName("baptisia"));
-
-            _plantenDao.GetPlantenByName("baptisia");
-
-            //PrintPlanten(_plantenDao.GetPlantenByFamily("fabaceae"));
+            PrintPlanten(_plantenDao.GetPlanten());
         }
 
         static void PrintPlanten(List<Planten2021> planten)
