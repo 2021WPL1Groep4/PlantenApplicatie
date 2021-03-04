@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace PlantenApplicatie.Domain
+namespace PlantenApplicatie.Data
 {
     public partial class PlantenContext : DbContext
     {
