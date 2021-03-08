@@ -18,44 +18,62 @@ namespace PlantenApplicatie
     /// </summary>
     public partial class BeheerPlanten : Window
     {
-        PlantenDao plantenDao;
+        private PlantenDao plantenDao;
 
         public BeheerPlanten()
         {
             InitializeComponent();
-            plantenDao = PlantenDao.Instance();
+            plantenDao = PlantenDao.Instance;
 
             lvPlanten.ItemsSource = plantenDao.GetPlanten();
             cmbType.ItemsSource = plantenDao.GetTypes();
-            cmbGeslacht.ItemsSource = plantenDao.GetGeslachten();
-            cmbSoort.ItemsSource = plantenDao.GetSoorten();
-            cmbFamilie.ItemsSource = plantenDao.GetFamilies();
-
+            cmbGeslacht.ItemsSource = plantenDao.GetUniqueGenusNames();
+            cmbSoort.ItemsSource = plantenDao.GetUniqueSpeciesNames();
+            cmbFamilie.ItemsSource = plantenDao.GetUniqueFamilyNames();
         }
 
-        private void txtPlantnaam_KeyDown(object sender, KeyEventArgs e)
+        private void ResetInputFields()
         {
-
+            txtPlantnaam.Text = string.Empty;
+            txtNLNaam.Text = string.Empty;
+            cmbFamilie.SelectedValue = null;
+            cmbGeslacht.SelectedValue = null;
+            cmbSoort.SelectedValue = null;
+            txtVariant.Text = string.Empty;
         }
 
-        private void txtNLNaam_KeyDown(object sender, KeyEventArgs e)
+        private void SearchPlantenOnEnterPressed(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == Key.Enter)
+            {
+                SearchPlanten();
+            }
         }
 
         private void btnZoeken_Click(object sender, RoutedEventArgs e)
         {
+            SearchPlanten();
+        }
 
+        private void SearchPlanten()
+        {
+            var family = cmbFamilie.SelectedValue is null ? null : cmbFamilie.SelectedValue.ToString();
+            var genus = cmbGeslacht.SelectedValue is null ? null : cmbGeslacht.SelectedValue.ToString();
+            var species = cmbSoort.SelectedValue is null ? null : cmbSoort.SelectedValue.ToString();
+
+            var list = plantenDao.SearchByProperties(txtPlantnaam.Text,
+                family, genus,
+                species, txtVariant.Text);
+
+            lvPlanten.ItemsSource = list;
+
+            ResetInputFields();
         }
 
         private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void txtVariant_KeyDown(object sender, KeyEventArgs e)
-        {
-
+            PlantDetails plantDetails = new PlantDetails();
+            plantDetails.Show();
         }
     }
 }

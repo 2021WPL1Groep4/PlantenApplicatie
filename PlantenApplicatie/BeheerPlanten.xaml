@@ -15,7 +15,7 @@
                             <Canvas Margin="10">
                                 <!-- eerste rij -->
                                 <Label Canvas.Top="0" Content="Plantnaam :"/>
-                                <TextBox x:Name="txtPlantnaam" Width="200" Canvas.Top="5" Canvas.Left="80" Text="Typ een plantnaam" KeyDown="txtPlantnaam_KeyDown" />
+                                <TextBox x:Name="txtPlantnaam" Width="200" Canvas.Top="5" Canvas.Left="80" Text="Typ een plantnaam" KeyDown="SearchPlantenOnEnterPressed" />
                                 <Label Canvas.Top="0" Canvas.Left="350" Content="Familie :"/>
                                 <ComboBox x:Name="cmbFamilie" Canvas.Top="5" Canvas.Left="450" Width="200" />
                                 <!-- tweede rij -->
@@ -30,9 +30,9 @@
                                 <Label Content="Variant :" Canvas.Top="60" Canvas.Left="350" />
                                 <!-- vierde rij-->
                                 <Button x:Name="btnZoeken" Content="Zoeken" Canvas.Top="97" Width="80" Canvas.Left="878" Click="btnZoeken_Click"/>
-                                <TextBox x:Name="txtVariant" Height="19" Canvas.Left="450" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123" KeyDown="txtVariant_KeyDown"/>
+                                <TextBox x:Name="txtVariant" Height="19" Canvas.Left="450" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123" KeyDown="SearchPlantenOnEnterPressed"/>
                                 <Label Canvas.Top="95" Content="Naam:"/>
-                                <TextBox x:Name="txtNLNaam" Width="200" Canvas.Top="99" Canvas.Left="80" Text="Typ de nederlandse naam" KeyDown="txtNLNaam_KeyDown"  />
+                                <TextBox x:Name="txtNLNaam" Width="200" Canvas.Top="99" Canvas.Left="80" Text="Typ de nederlandse naam" KeyDown="SearchPlantenOnEnterPressed"  />
                             </Canvas>
                         </GroupBox>
                         <GroupBox Header="Resultaten" Height="265">
