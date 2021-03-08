@@ -8,10 +8,11 @@ namespace PlantenApplicatie.Data
     {
         public static string ParseSearchText(string text)
         {
-            return RemoveDiacriticsFromText(text.Trim().ToLower());
+            return text.Trim().ToLower();
+            //return RemoveDiacriticsFromText(text.Trim().ToLower());
         }
 
-        private static string RemoveDiacriticsFromText(string originalText)
+        /*private static string RemoveDiacriticsFromText(string originalText)
         {
             var newText = string.Empty;
             
@@ -22,6 +23,6 @@ namespace PlantenApplicatie.Data
             }
 
             return newText;
-        }
+        }*/
     }
 }
