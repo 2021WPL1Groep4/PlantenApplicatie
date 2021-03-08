@@ -16,7 +16,7 @@ namespace PlantenApplicatie.CLI
             PrintPlanten(_plantenDao.SearchPlantenByName("Veronicastrum"));
         }
 
-        private static void PrintPlanten(IEnumerable<Plant> planten)
+        private static void PrintPlanten(List<Plant> planten)
         {
             foreach (var plant in planten)
             {
