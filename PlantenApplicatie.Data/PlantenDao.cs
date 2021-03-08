@@ -45,12 +45,12 @@ namespace PlantenApplicatie.Data
             return SearchPlantenByProperty(p => p.Familie, family);
         }
 
-        public IEnumerable<Plant> SearchPlantenByGeslacht(string genus)
+        public IEnumerable<Plant> SearchPlantenByGenus(string genus)
         {
             return SearchPlantenByProperty(p => p.Geslacht, genus);
         }
 
-        public IEnumerable<Plant> SearchPlantenBySoort(string species)
+        public IEnumerable<Plant> SearchPlantenBySpecies(string species)
         {
             return SearchPlantenByProperty(p => p.Soort, species);
         }
