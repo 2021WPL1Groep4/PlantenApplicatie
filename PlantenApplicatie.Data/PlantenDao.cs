@@ -7,123 +7,127 @@ namespace PlantenApplicatie.Data
 {
     public class PlantenDao
     {
-        private static readonly PlantenDao instance = new PlantenDao();
+        private readonly PlantenContext _context;
 
-        public static PlantenDao Instance()
+        static PlantenDao()
         {
-            return instance;
+            Instance = new PlantenDao();
         }
 
         private PlantenDao()
         {
-            this._context = new PlantenContext();
+            _context = new PlantenContext();
         }
 
-        private PlantenContext _context;
-
-        /*
-         * PLANT
-         */
+        public static PlantenDao Instance { get; }
 
         public List<Plant> GetPlanten()
         {
             return _context.Plant.ToList();
         }
+
+        public List<Plant> SearchByProperties(string name, string family, 
+            string genus, string species, string variant)
+        {
+            var planten = GetPlanten();
+
+            planten = SearchPlantenByName(planten, name);
+            planten = SearchPlantenByFamily(planten, family);
+            planten = SearchPlantenByGenus(planten, genus);
+            planten = SearchPlantenBySpecies(planten, species);
+            planten = SearchPlantenByVariant(planten, variant);
+
+            return planten.OrderBy(p => p.Fgsv).ToList();
+        }
         
-        public Plant GetPlantenByName(string name)
+        public List<Plant> SearchPlantenByName(List<Plant> planten, string name)
         {
-            var plantenbyname = _context.Plant.FirstOrDefault(a => a.Fgsv == name);
-            return plantenbyname;
+            if (string.IsNullOrEmpty(name))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
+                    p.Fgsv is not null 
+                    && PlantenParser.ParseSearchText(p.Fgsv)
+                        .Contains(PlantenParser.ParseSearchText(name)))
+                .ToList();
         }
 
-        /*
-         * FAMILIE
-         */
-
-        public List<string> GetFamilies()
+        public List<Plant> SearchPlantenByFamily(List<Plant> planten, string family)
         {
-            // return _context.TfgsvFamilie.ToList();
+            if (string.IsNullOrEmpty(family))
+            {
+                return planten;
+            }
 
-            var result = _context.TfgsvFamilie.Select(f => f.Familienaam).Distinct().ToList();
-
-            return result;
-
-
+            return planten.Where(p =>
+                    p.Familie is not null 
+                    && PlantenParser.ParseSearchText(p.Familie)
+                        .Contains(PlantenParser.ParseSearchText(family)))
+                .ToList();
         }
 
-        /* 
-         * TYPE
-         */
+        public List<Plant> SearchPlantenByGenus(List<Plant> planten, string genus)
+        {
+            if (string.IsNullOrEmpty(genus))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
+                    p.Geslacht is not null 
+                    && PlantenParser.ParseSearchText(p.Geslacht)
+                        .Contains(PlantenParser.ParseSearchText(genus)))
+                .ToList();
+        }
+
+        public List<Plant> SearchPlantenBySpecies(List<Plant> planten, string species)
+        {
+            if (string.IsNullOrEmpty(species))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
+                    p.Soort is not null 
+                    && PlantenParser.ParseSearchText(p.Soort)
+                        .Contains(PlantenParser.ParseSearchText(species)))
+                .ToList();
+        }
+
+        public List<Plant> SearchPlantenByVariant(List<Plant> planten, string variant)
+        {
+            if (string.IsNullOrEmpty(variant))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
+                    p.Variant is not null 
+                    && PlantenParser.ParseSearchText(p.Variant)
+                        .Contains(PlantenParser.ParseSearchText(variant)))
+                .ToList();
+        }
+
+        public List<string> GetUniqueFamilyNames()
+        {
+            return _context.TfgsvFamilie.Select(f => f.Familienaam).Distinct().ToList();
+        }
+
+        public List<string> GetUniqueGenusNames()
+        {
+            return _context.TfgsvGeslacht.Select(g => g.Geslachtnaam).Distinct().ToList();
+        }
+
+        public List<string> GetUniqueSpeciesNames()
+        {
+            return _context.TfgsvSoort.Select(s => s.Soortnaam).Distinct().ToList();
+        }
 
         public List<TfgsvType> GetTypes()
         {
             return _context.TfgsvType.ToList();
         }
-
-        /*
-         * SOORT
-         */
-
-        public List<string> GetSoorten()
-        {
-            // return _context.TfgsvSoort.ToList();
-            var result = _context.TfgsvSoort.Select(s => s.Soortnaam).Distinct().ToList();
-
-            return result;
-        }
-
-        /*
-         * GESLACHT
-         */
-
-        public List<string> GetGeslachten()
-        {
-            //return _context.TfgsvGeslacht.ToList();
-
-            var result = _context.TfgsvGeslacht.Select(g => g.Geslachtnaam).Distinct().ToList();
-
-            return result;
-        }
-
-        public List<Plant> ZoekPlantenOpNaam(string name)
-        {
-            return _context.Plant.Where(p => p.Fgsv == name).ToList();
-        }
-
-        /*
-        private IEnumerable<Plant> SearchPlantenByProperty(Func<Plant, string> property, string propertyValue)
-        {
-            return GetPlanten().Where(p =>
-                    property(p) is not null 
-                    && PlantenParser.ParseSearchText(property(p))
-                        .Contains(PlantenParser.ParseSearchText(propertyValue)))
-                .OrderBy(property);
-        }
-        
-        public IEnumerable<Plant> SearchPlantenByName(string name)
-        {
-            return SearchPlantenByProperty(p => p.Fgsv, name);
-        }
-
-        public IEnumerable<Plant> SearchPlantenByFamily(string family)
-        {
-            return SearchPlantenByProperty(p => p.Familie, family);
-        }
-
-        public IEnumerable<Plant> SearchPlantenByGenus(string genus)
-        {
-            return SearchPlantenByProperty(p => p.Geslacht, genus);
-        }
-
-        public IEnumerable<Plant> SearchPlantenBySpecies(string species)
-        {
-            return SearchPlantenByProperty(p => p.Soort, species);
-        }
-
-        public IEnumerable<Plant> SearchPlantenByVariant(string variant)
-        {
-            return SearchPlantenByProperty(p => p.Variant, variant);
-        }
-        */
     }
 }

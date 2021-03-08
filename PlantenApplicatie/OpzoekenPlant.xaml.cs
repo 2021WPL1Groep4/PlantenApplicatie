@@ -24,18 +24,28 @@ namespace PlantenApplicatie
         public OpzoekenPlant()
         {
             InitializeComponent();
-            plantenDAO = PlantenDao.Instance();
+            plantenDAO = PlantenDao.Instance;
             Start();
 
         }
 
         private void Start()
         {
-            cmbFamilie.ItemsSource = plantenDAO.GetFamilies();
-            cmbGeslacht.ItemsSource = plantenDAO.GetGeslachten();
-            cmbSoort.ItemsSource = plantenDAO.GetSoorten();
+            cmbFamilie.ItemsSource = plantenDAO.GetUniqueFamilyNames();
+            cmbGeslacht.ItemsSource = plantenDAO.GetUniqueGenusNames();
+            cmbSoort.ItemsSource = plantenDAO.GetUniqueSpeciesNames();
             cmbType.ItemsSource = plantenDAO.GetTypes();
             lvPlanten.ItemsSource = plantenDAO.GetPlanten();
+        }
+
+        private void ResetInputFields()
+        {
+            txtPlantnaam.Text = string.Empty;
+            txtNLNaam.Text = string.Empty;
+            cmbFamilie.SelectedValue = null;
+            cmbGeslacht.SelectedValue = null;
+            cmbSoort.SelectedValue = null;
+            txtVariant.Text = string.Empty;
         }
 
         private void txtPlantnaam_KeyDown(object sender, KeyEventArgs e)
@@ -73,7 +83,17 @@ namespace PlantenApplicatie
 
         private void btnZoeken_Click(object sender, RoutedEventArgs e)
         {
+            var family = cmbFamilie.SelectedValue is null ? null : cmbFamilie.SelectedValue.ToString();
+            var genus = cmbGeslacht.SelectedValue is null ? null : cmbGeslacht.SelectedValue.ToString();
+            var species = cmbSoort.SelectedValue is null ? null : cmbSoort.SelectedValue.ToString();
 
+            var list = plantenDAO.SearchByProperties(txtPlantnaam.Text,
+                family, genus,
+                species, txtVariant.Text);
+
+            lvPlanten.ItemsSource = list;
+            
+            ResetInputFields();
         }
     }
 }
