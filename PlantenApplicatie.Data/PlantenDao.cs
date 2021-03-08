@@ -25,50 +25,89 @@ namespace PlantenApplicatie.Data
         {
             return _context.Plant.ToList();
         }
-        
-        public List<Plant> SearchPlantenByName(string name)
+
+        public List<Plant> SearchByProperties(string name, string family, 
+            string genus, string species, string variant)
         {
-            return GetPlanten().Where(p =>
+            var planten = GetPlanten();
+
+            planten = SearchPlantenByName(planten, name);
+            planten = SearchPlantenByFamily(planten, family);
+            planten = SearchPlantenByGenus(planten, genus);
+            planten = SearchPlantenBySpecies(planten, species);
+            planten = SearchPlantenByVariant(planten, variant);
+
+            return planten.OrderBy(p => p.Fgsv).ToList();
+        }
+        
+        public List<Plant> SearchPlantenByName(List<Plant> planten, string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
                     p.Fgsv is not null 
                     && PlantenParser.ParseSearchText(p.Fgsv)
                         .Contains(PlantenParser.ParseSearchText(name)))
-                .OrderBy(p => p.Fgsv).ToList();
+                .ToList();
         }
 
-        public List<Plant> SearchPlantenByFamily(string family)
+        public List<Plant> SearchPlantenByFamily(List<Plant> planten, string family)
         {
-            return GetPlanten().Where(p =>
+            if (string.IsNullOrEmpty(family))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
                     p.Familie is not null 
                     && PlantenParser.ParseSearchText(p.Familie)
                         .Contains(PlantenParser.ParseSearchText(family)))
-                .OrderBy(p => p.Familie).ToList();
+                .ToList();
         }
 
-        public List<Plant> SearchPlantenByGenus(string genus)
+        public List<Plant> SearchPlantenByGenus(List<Plant> planten, string genus)
         {
-            return GetPlanten().Where(p =>
+            if (string.IsNullOrEmpty(genus))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
                     p.Geslacht is not null 
                     && PlantenParser.ParseSearchText(p.Geslacht)
                         .Contains(PlantenParser.ParseSearchText(genus)))
-                .OrderBy(p => p.Geslacht).ToList();
+                .ToList();
         }
 
-        public List<Plant> SearchPlantenBySpecies(string species)
+        public List<Plant> SearchPlantenBySpecies(List<Plant> planten, string species)
         {
-            return GetPlanten().Where(p =>
+            if (string.IsNullOrEmpty(species))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
                     p.Soort is not null 
                     && PlantenParser.ParseSearchText(p.Soort)
                         .Contains(PlantenParser.ParseSearchText(species)))
-                .OrderBy(p => p.Soort).ToList();
+                .ToList();
         }
 
-        public List<Plant> SearchPlantenByVariant(string variant)
+        public List<Plant> SearchPlantenByVariant(List<Plant> planten, string variant)
         {
-            return GetPlanten().Where(p =>
+            if (string.IsNullOrEmpty(variant))
+            {
+                return planten;
+            }
+
+            return planten.Where(p =>
                     p.Variant is not null 
                     && PlantenParser.ParseSearchText(p.Variant)
                         .Contains(PlantenParser.ParseSearchText(variant)))
-                .OrderBy(p => p.Variant).ToList();
+                .ToList();
         }
 
         public List<string> GetUniqueFamilyNames()

@@ -12,7 +12,7 @@
                 <Canvas Margin="10">
                     <!-- eerste rij -->
                     <Label Canvas.Top="0" Content="Plantnaam :"/>
-                    <TextBox x:Name="txtPlantnaam" Width="200" Canvas.Top="5" Canvas.Left="80" Text="Typ een plantnaam" KeyDown="txtPlantnaam_KeyDown"  />
+                    <TextBox x:Name="txtPlantnaam" Width="200" Canvas.Top="5" Canvas.Left="80" Text="" KeyDown="txtPlantnaam_KeyDown"  />
                     <Label Canvas.Top="0" Canvas.Left="350" Content="Familie :"/>
                     <ComboBox x:Name="cmbFamilie" Canvas.Top="5" Canvas.Left="450" Width="200" />
                     <!-- tweede rij -->
@@ -26,10 +26,10 @@
                     <ComboBox x:Name="cmbSoort" Width="200" Canvas.Top="65" Canvas.Left="80"  />
                     <Label Content="Variant :" Canvas.Top="60" Canvas.Left="350" />
                     <!-- vierde rij-->
-                    <Button Content="Zoeken" Canvas.Top="107" Width="80" Canvas.Left="688"/>
-                    <TextBox Height="19" Canvas.Left="450" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123"/>
-                    <Label Canvas.Top="99" Content="Naam:"/>
-                    <TextBox x:Name="txtNLNaam" Width="200" Canvas.Top="103" Canvas.Left="80" Text="Typ de nederlandse naam" KeyDown="txtPlantnaam_KeyDown"  />
+                    <Button x:Name="btnZoeken" Content="Zoeken" Canvas.Top="97" Width="80" Canvas.Left="878" Click="btnZoeken_Click"/>
+                    <TextBox x:Name="txtVariant" Height="19" Canvas.Left="450" Canvas.Top="68" Text="" TextWrapping="Wrap" Width="123" KeyDown="txtVariant_KeyDown"/>
+                    <Label Canvas.Top="95" Content="Naam:"/>
+                    <TextBox x:Name="txtNLNaam" Width="200" Canvas.Top="99" Canvas.Left="80" Text="" KeyDown="txtNLnaam_KeyDown"  />
                 </Canvas>
             </GroupBox>
             <GroupBox Header="Resultaten" Height="265">
@@ -37,13 +37,13 @@
                     <ListView x:Name="lvPlanten" Canvas.Left="10" Height="220" Width="968">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Plantnaam" Width="200" DisplayMemberBinding="{Binding Fgsv}" />
-                                <GridViewColumn Header="Type" Width="70" DisplayMemberBinding="{Binding Type}" />
-                                <GridViewColumn Header="Familie" Width="70" DisplayMemberBinding="{Binding Familie}" />
-                                <GridViewColumn Header="Geslacht" Width="100" DisplayMemberBinding="{Binding Geslacht}" />
-                                <GridViewColumn Header="Soort" Width="100" DisplayMemberBinding="{Binding Soort}" />
-                                <GridViewColumn Header="Variant" Width="50" DisplayMemberBinding="{Binding Variant}" />
-                                <GridViewColumn Header="Nederlandse naam" Width="150" DisplayMemberBinding="{Binding NederlandsNaam}" />
+                                <GridViewColumn Header="Plantnaam" Width="Auto" DisplayMemberBinding="{Binding Fgsv}" />
+                                <GridViewColumn Header="Type" Width="Auto" DisplayMemberBinding="{Binding Type}" />
+                                <GridViewColumn Header="Familie" Width="Auto" DisplayMemberBinding="{Binding Familie}" />
+                                <GridViewColumn Header="Geslacht" Width="Auto" DisplayMemberBinding="{Binding Geslacht}" />
+                                <GridViewColumn Header="Soort" Width="Auto" DisplayMemberBinding="{Binding Soort}" />
+                                <GridViewColumn Header="Variant" Width="Auto" DisplayMemberBinding="{Binding Variant}" />
+                                <GridViewColumn Header="Nederlandse naam" Width="Auto" DisplayMemberBinding="{Binding NederlandsNaam}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -53,7 +53,7 @@
             <!-- knop details plant -->
             <Grid Height="50">
                 <Canvas>
-                    <Button x:Name="btnDetailsPlant" Canvas.Top="15" Canvas.Left="20" Width="150" Content="Details plant bekijken" Click="btnDetailsPlant_Click_1"/>
+                    <Button x:Name="btnDetailsPlant" Canvas.Top="15" Canvas.Left="20" Width="150" Content="Details plant bekijken" Click="btnDetailsPlant_Click"/>
 
                 </Canvas>
             </Grid>
