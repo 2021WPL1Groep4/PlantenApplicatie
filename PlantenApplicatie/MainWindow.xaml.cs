@@ -52,7 +52,8 @@ namespace PlantenApplicatie
 
         private void menu_Item_Wijzigen_Plant_Click(object sender, RoutedEventArgs e)
         {
-
+            WijzigenPlant wijzigenPlant = new WijzigenPlant();
+            wijzigenPlant.Show();
         }
     }
 }
