@@ -87,8 +87,7 @@ namespace PlantenApplicatie
             var genus = cmbGeslacht.SelectedValue is null ? null : cmbGeslacht.SelectedValue.ToString();
             var species = cmbSoort.SelectedValue is null ? null : cmbSoort.SelectedValue.ToString();
 
-            var list = plantenDAO.SearchByProperties(txtPlantnaam.Text,
-                family, genus,
+            var list = plantenDAO.SearchPlantenByProperties(txtPlantnaam.Text, family, genus,
                 species, txtVariant.Text);
 
             lvPlanten.ItemsSource = list;

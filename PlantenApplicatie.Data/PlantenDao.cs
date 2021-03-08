@@ -25,21 +25,21 @@ namespace PlantenApplicatie.Data
             return _context.Plant.ToList();
         }
 
-        public List<Plant> SearchByProperties(string name, string family, 
+        public List<Plant> SearchPlantenByProperties(string name, string family, 
             string genus, string species, string variant)
         {
             var planten = GetPlanten();
 
-            planten = SearchPlantenByName(planten, name);
-            planten = SearchPlantenByFamily(planten, family);
-            planten = SearchPlantenByGenus(planten, genus);
-            planten = SearchPlantenBySpecies(planten, species);
-            planten = SearchPlantenByVariant(planten, variant);
+            planten = FilterPlantenByName(planten, name);
+            planten = FilterPlantenByFamily(planten, family);
+            planten = FilterPlantenByGenus(planten, genus);
+            planten = FilterPlantenBySpecies(planten, species);
+            planten = FilterPlantenByVariant(planten, variant);
 
             return planten.OrderBy(p => p.Fgsv).ToList();
         }
 
-        private static List<Plant> SearchPlantenByName(List<Plant> planten, string name)
+        private static List<Plant> FilterPlantenByName(List<Plant> planten, string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -53,7 +53,7 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        private static List<Plant> SearchPlantenByFamily(List<Plant> planten, string family)
+        private static List<Plant> FilterPlantenByFamily(List<Plant> planten, string family)
         {
             if (string.IsNullOrEmpty(family))
             {
@@ -67,7 +67,7 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        private static List<Plant> SearchPlantenByGenus(List<Plant> planten, string genus)
+        private static List<Plant> FilterPlantenByGenus(List<Plant> planten, string genus)
         {
             if (string.IsNullOrEmpty(genus))
             {
@@ -81,7 +81,7 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        private static List<Plant> SearchPlantenBySpecies(List<Plant> planten, string species)
+        private static List<Plant> FilterPlantenBySpecies(List<Plant> planten, string species)
         {
             if (string.IsNullOrEmpty(species))
             {
@@ -95,7 +95,7 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        private static List<Plant> SearchPlantenByVariant(List<Plant> planten, string variant)
+        private static List<Plant> FilterPlantenByVariant(List<Plant> planten, string variant)
         {
             if (string.IsNullOrEmpty(variant))
             {
