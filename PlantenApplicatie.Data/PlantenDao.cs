@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using PlantenApplicatie.Domain;
 
@@ -39,8 +38,8 @@ namespace PlantenApplicatie.Data
 
             return planten.OrderBy(p => p.Fgsv).ToList();
         }
-        
-        public List<Plant> SearchPlantenByName(List<Plant> planten, string name)
+
+        private static List<Plant> SearchPlantenByName(List<Plant> planten, string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -54,7 +53,7 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        public List<Plant> SearchPlantenByFamily(List<Plant> planten, string family)
+        private static List<Plant> SearchPlantenByFamily(List<Plant> planten, string family)
         {
             if (string.IsNullOrEmpty(family))
             {
@@ -68,7 +67,7 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        public List<Plant> SearchPlantenByGenus(List<Plant> planten, string genus)
+        private static List<Plant> SearchPlantenByGenus(List<Plant> planten, string genus)
         {
             if (string.IsNullOrEmpty(genus))
             {
@@ -82,7 +81,7 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        public List<Plant> SearchPlantenBySpecies(List<Plant> planten, string species)
+        private static List<Plant> SearchPlantenBySpecies(List<Plant> planten, string species)
         {
             if (string.IsNullOrEmpty(species))
             {
@@ -96,7 +95,7 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        public List<Plant> SearchPlantenByVariant(List<Plant> planten, string variant)
+        private static List<Plant> SearchPlantenByVariant(List<Plant> planten, string variant)
         {
             if (string.IsNullOrEmpty(variant))
             {
