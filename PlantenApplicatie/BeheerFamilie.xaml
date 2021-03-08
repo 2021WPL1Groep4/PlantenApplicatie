@@ -45,10 +45,9 @@
                     <Canvas Width="700" Height="470" Background="White">
                         <Label Width="150" Content="Familie: " Canvas.Top="10" Canvas.Left="25" />
                         <ComboBox Name="cbFamilie_bijWijzigenOfVerwijderen" Width="150" Canvas.Top="14" Canvas.Left="175" />
-                        <Button Width="150" Height="25" Content="Familie wijzigen" Name="btnFamilieWijzigen" Click="btnOpdrachtWijzigen_Click" Canvas.Top="330" Canvas.Left="25"/>
-                        <Button Width="150" Height="25" Content="Familie verwijderen" Name="btnFamilieVerwijderen" Click="btnOpdrachtVerwijderen_Click" Canvas.Top="330" Canvas.Left="200"/>
-                        <Button Width="150" Height="25" Content="Terug naar hoofdmenu" Name="btnHoofdMenu_bijWijzigenOfVerwijderen" 
-                            Click="btnHoofdMenu_bijWijzigenOfVerwijderen_Click" Canvas.Top="330" Canvas.Right="25" />
+                        <Button Width="150" Height="25" Content="Familie wijzigen" Name="btnFamilieWijzigen"  Canvas.Top="330" Canvas.Left="25"/>
+                        <Button Width="150" Height="25" Content="Familie verwijderen" Name="btnFamilieVerwijderen" Canvas.Top="330" Canvas.Left="200"/>
+                        <Button Width="150" Height="25" Content="Terug naar hoofdmenu" Name="btnHoofdMenu_bijWijzigenOfVerwijderen" Canvas.Top="330" Canvas.Right="25" />
                     </Canvas>
                 </TabItem>
             </TabControl>

@@ -7,25 +7,72 @@ namespace PlantenApplicatie.Data
 {
     public class PlantenDao
     {
-        private readonly PlantenContext _context;
+        public static readonly PlantenDao instance = new PlantenDao();
 
-        static PlantenDao()
+        public static PlantenDao Instance()
         {
-            Instance = new PlantenDao();
+            return instance;
         }
 
         private PlantenDao()
         {
-            _context = new PlantenContext();
+            this._context = new PlantenContext();
         }
 
-        public static PlantenDao Instance { get; }
+        private PlantenContext _context;
 
-        public IEnumerable<Plant> GetPlanten()
+        /*
+         * PLANT
+         */
+
+        public List<Plant> GetPlanten()
         {
             return _context.Plant.ToList();
         }
         
+        public Plant getPlantenByName(string name)
+        {
+            var plantenbyname = _context.Plant.FirstOrDefault(a => a.Fgsv == name);
+            return plantenbyname;
+        }
+
+        /*
+         * FAMILIE
+         */
+
+        public List<TfgsvFamilie> getFamilies()
+        {
+            return _context.TfgsvFamilie.ToList();
+        }
+
+        /* 
+         * TYPE
+         */
+
+        public List<TfgsvType> getTypes()
+        {
+            return _context.TfgsvType.ToList();
+        }
+
+        /*
+         * SOORT
+         */
+
+        public List<TfgsvSoort> getSoorten()
+        {
+            return _context.TfgsvSoort.ToList();
+        }
+
+        /*
+         * GESLACHT
+         */
+
+        public List<TfgsvGeslacht> getGeslachten()
+        {
+            return _context.TfgsvGeslacht.ToList();
+        }
+
+        /*
         private IEnumerable<Plant> SearchPlantenByProperty(Func<Plant, string> property, string propertyValue)
         {
             return GetPlanten().Where(p =>
@@ -59,5 +106,6 @@ namespace PlantenApplicatie.Data
         {
             return SearchPlantenByProperty(p => p.Variant, variant);
         }
+        */
     }
 }

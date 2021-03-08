@@ -7,5 +7,11 @@ namespace PlantenApplicatie.Domain
     {
         public long Planttypeid { get; set; }
         public string Planttypenaam { get; set; }
+
+        // override ToString, toon de property waarde in de combobox
+        public override string ToString()
+        {
+            return Planttypenaam;
+        }
     }
 }

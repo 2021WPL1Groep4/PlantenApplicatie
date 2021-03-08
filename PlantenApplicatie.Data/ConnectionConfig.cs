@@ -6,6 +6,6 @@ namespace PlantenApplicatie.Data
 {
     public static class ConnectionConfig
     {
-        public static string ConnectionString => "Server=LAPTOP-UHV1F4VP\\VIVES;Database=Planten2021;Trusted_Connection=True;";
+        public static string ConnectionString => "Server=LAPTOP-DAVYGEVA\\VIVES;Database=Planten2021;Trusted_Connection=True;";
     }
 }
