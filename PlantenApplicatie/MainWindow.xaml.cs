@@ -41,6 +41,7 @@ namespace PlantenApplicatie
         {
             OpzoekenPlant opzoekenPlant = new OpzoekenPlant();
             opzoekenPlant.Show();
+
         }
 
         //Jim

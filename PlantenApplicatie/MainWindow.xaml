@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PlantenApplicatie"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="grid1">
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Plant">
@@ -37,5 +37,6 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
+        
     </Grid>
 </Window>

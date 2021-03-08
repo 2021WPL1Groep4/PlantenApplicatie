@@ -30,7 +30,7 @@ namespace PlantenApplicatie
             cmbSoort.ItemsSource = plantenDAO.getSoorten();
             cmbType.ItemsSource = plantenDAO.getTypes();
             lvPlanten.ItemsSource = plantenDAO.GetPlanten();
-           
+
         }
 
         private void txtPlantnaam_KeyDown(object sender, KeyEventArgs e)

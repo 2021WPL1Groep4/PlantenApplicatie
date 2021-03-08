@@ -36,11 +36,6 @@ namespace PlantenApplicatie.Data
             return plantenbyname;
         }
 
-        public List<Plant> ZoekPlantenOpNaam(string name)
-        {
-            return _context.Plant.Where(p => p.Fgsv == name).ToList();
-        }
-
         /*
          * FAMILIE
          */
@@ -88,6 +83,11 @@ namespace PlantenApplicatie.Data
             var result = _context.TfgsvGeslacht.Select(g => g.Geslachtnaam).Distinct().ToList();
 
             return result;
+        }
+
+        public List<Plant> ZoekPlantenOpNaam(string name)
+        {
+            return _context.Plant.Where(p => p.Fgsv == name).ToList();
         }
 
         /*
