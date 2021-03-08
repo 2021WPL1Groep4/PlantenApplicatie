@@ -24,13 +24,12 @@ namespace PlantenApplicatie
         public OpzoekenPlant()
         {
             InitializeComponent();
-            plantenDAO = PlantenDao.Instance();
-            cmbFamilie.ItemsSource = plantenDAO.getFamilies();
-            cmbGeslacht.ItemsSource = plantenDAO.getGeslachten();
-            cmbSoort.ItemsSource = plantenDAO.getSoorten();
-            cmbType.ItemsSource = plantenDAO.getTypes();
+            plantenDAO = PlantenDao.Instance;
+            cmbFamilie.ItemsSource = plantenDAO.GetUniqueFamilyNames();
+            cmbGeslacht.ItemsSource = plantenDAO.GetUniqueGenusNames();
+            cmbSoort.ItemsSource = plantenDAO.GetUniqueSpeciesNames();
+            cmbType.ItemsSource = plantenDAO.GetTypes();
             lvPlanten.ItemsSource = plantenDAO.GetPlanten();
-           
         }
 
         private void txtPlantnaam_KeyDown(object sender, KeyEventArgs e)

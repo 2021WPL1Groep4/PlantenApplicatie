@@ -7,123 +7,88 @@ namespace PlantenApplicatie.Data
 {
     public class PlantenDao
     {
-        public static readonly PlantenDao instance = new PlantenDao();
+        private readonly PlantenContext _context;
 
-        public static PlantenDao Instance()
+        static PlantenDao()
         {
-            return instance;
+            Instance = new PlantenDao();
         }
 
         private PlantenDao()
         {
-            this._context = new PlantenContext();
+            _context = new PlantenContext();
         }
 
-        private PlantenContext _context;
-
-        /*
-         * PLANT
-         */
+        public static PlantenDao Instance { get; }
 
         public List<Plant> GetPlanten()
         {
             return _context.Plant.ToList();
         }
         
-        public Plant getPlantenByName(string name)
+        public List<Plant> SearchPlantenByName(string name)
         {
-            var plantenbyname = _context.Plant.FirstOrDefault(a => a.Fgsv == name);
-            return plantenbyname;
+            return GetPlanten().Where(p =>
+                    p.Fgsv is not null 
+                    && PlantenParser.ParseSearchText(p.Fgsv)
+                        .Contains(PlantenParser.ParseSearchText(name)))
+                .OrderBy(p => p.Fgsv).ToList();
         }
 
-        /*
-         * FAMILIE
-         */
-
-        public List<string> getFamilies()
+        public List<Plant> SearchPlantenByFamily(string family)
         {
-            // return _context.TfgsvFamilie.ToList();
-
-            var result = _context.TfgsvFamilie.Select(f => f.Familienaam).Distinct().ToList();
-
-            return result;
-
-
+            return GetPlanten().Where(p =>
+                    p.Familie is not null 
+                    && PlantenParser.ParseSearchText(p.Familie)
+                        .Contains(PlantenParser.ParseSearchText(family)))
+                .OrderBy(p => p.Familie).ToList();
         }
 
-        /* 
-         * TYPE
-         */
+        public List<Plant> SearchPlantenByGenus(string genus)
+        {
+            return GetPlanten().Where(p =>
+                    p.Geslacht is not null 
+                    && PlantenParser.ParseSearchText(p.Geslacht)
+                        .Contains(PlantenParser.ParseSearchText(genus)))
+                .OrderBy(p => p.Geslacht).ToList();
+        }
 
-        public List<TfgsvType> getTypes()
+        public List<Plant> SearchPlantenBySpecies(string species)
+        {
+            return GetPlanten().Where(p =>
+                    p.Soort is not null 
+                    && PlantenParser.ParseSearchText(p.Soort)
+                        .Contains(PlantenParser.ParseSearchText(species)))
+                .OrderBy(p => p.Soort).ToList();
+        }
+
+        public List<Plant> SearchPlantenByVariant(string variant)
+        {
+            return GetPlanten().Where(p =>
+                    p.Variant is not null 
+                    && PlantenParser.ParseSearchText(p.Variant)
+                        .Contains(PlantenParser.ParseSearchText(variant)))
+                .OrderBy(p => p.Variant).ToList();
+        }
+
+        public List<string> GetUniqueFamilyNames()
+        {
+            return _context.TfgsvFamilie.Select(f => f.Familienaam).Distinct().ToList();
+        }
+
+        public List<string> GetUniqueGenusNames()
+        {
+            return _context.TfgsvGeslacht.Select(g => g.Geslachtnaam).Distinct().ToList();
+        }
+
+        public List<string> GetUniqueSpeciesNames()
+        {
+            return _context.TfgsvSoort.Select(s => s.Soortnaam).Distinct().ToList();
+        }
+
+        public List<TfgsvType> GetTypes()
         {
             return _context.TfgsvType.ToList();
         }
-
-        /*
-         * SOORT
-         */
-
-        public List<string> getSoorten()
-        {
-            // return _context.TfgsvSoort.ToList();
-            var result = _context.TfgsvSoort.Select(s => s.Soortnaam).Distinct().ToList();
-
-            return result;
-        }
-
-        /*
-         * GESLACHT
-         */
-
-        public List<string> getGeslachten()
-        {
-            //return _context.TfgsvGeslacht.ToList();
-
-            var result = _context.TfgsvGeslacht.Select(g => g.Geslachtnaam).Distinct().ToList();
-
-            return result;
-        }
-
-        public List<Plant> ZoekPlantenOpNaam(string name)
-        {
-            return _context.Plant.Where(p => p.Fgsv == name).ToList();
-        }
-
-        /*
-        private IEnumerable<Plant> SearchPlantenByProperty(Func<Plant, string> property, string propertyValue)
-        {
-            return GetPlanten().Where(p =>
-                    property(p) is not null 
-                    && PlantenParser.ParseSearchText(property(p))
-                        .Contains(PlantenParser.ParseSearchText(propertyValue)))
-                .OrderBy(property);
-        }
-        
-        public IEnumerable<Plant> SearchPlantenByName(string name)
-        {
-            return SearchPlantenByProperty(p => p.Fgsv, name);
-        }
-
-        public IEnumerable<Plant> SearchPlantenByFamily(string family)
-        {
-            return SearchPlantenByProperty(p => p.Familie, family);
-        }
-
-        public IEnumerable<Plant> SearchPlantenByGenus(string genus)
-        {
-            return SearchPlantenByProperty(p => p.Geslacht, genus);
-        }
-
-        public IEnumerable<Plant> SearchPlantenBySpecies(string species)
-        {
-            return SearchPlantenByProperty(p => p.Soort, species);
-        }
-
-        public IEnumerable<Plant> SearchPlantenByVariant(string variant)
-        {
-            return SearchPlantenByProperty(p => p.Variant, variant);
-        }
-        */
     }
 }

@@ -11,17 +11,12 @@ namespace PlantenApplicatie.CLI
 
         static void Main(string[] args)
         {
-            _plantenDao = PlantenDao.instance;
+            _plantenDao = PlantenDao.Instance;
 
-            // PrintPlanten(_plantenDao.SearchPlantenByName("Veronicastrum"));
-
-            foreach (var plant in _plantenDao.ZoekPlantenOpNaam("Bergenia Flirt"))
-            {
-                Console.WriteLine(plant.Fgsv);
-            }
+            PrintPlanten(_plantenDao.SearchPlantenByName("   vero"));
         }
 
-        private static void PrintPlanten(IEnumerable<Plant> planten)
+        private static void PrintPlanten(List<Plant> planten)
         {
             foreach (var plant in planten)
             {
