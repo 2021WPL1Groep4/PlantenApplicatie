@@ -5,7 +5,7 @@ using PlantenApplicatie.Domain;
 
 namespace PlantenApplicatie.Data
 {
-    public partial class PlantenContext : DbContext
+    internal partial class PlantenContext : DbContext
     {
         public PlantenContext()
         {

@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using PlantenApplicatie.Domain;
 
 namespace PlantenApplicatie.Data
 {
     public class PlantenDao
     {
-        private static readonly PlantenDao DaoInstance;
-        private PlantenContext _context;
+        private readonly PlantenContext _context;
 
         static PlantenDao()
         {
-            DaoInstance = new PlantenDao();
+            Instance = new PlantenDao();
         }
 
         private PlantenDao()
@@ -22,70 +19,45 @@ namespace PlantenApplicatie.Data
             _context = new PlantenContext();
         }
 
-        public static PlantenDao Instance => DaoInstance;
+        public static PlantenDao Instance { get; }
 
-        public List<Plant> GetPlanten()
+        public IEnumerable<Plant> GetPlanten()
         {
             return _context.Plant.ToList();
         }
         
-        public List<Plant> GetPlantenByName(string name)
-        {
-
-            return GetPlanten().Where(p =>
-                    (p.Fgsv is not null && Parse(p.Fgsv).Contains(Parse(name))))
-                .OrderBy(p => p.Fgsv)
-                .ToList();
-        }
-
-        public List<Plant> GetPlantenByFamily(string family)
+        private IEnumerable<Plant> SearchPlantenByProperty(Func<Plant, string> property, string propertyValue)
         {
             return GetPlanten().Where(p =>
-                    (p.Familie is not null && Parse(p.Familie).Contains(Parse(family))))
-                .OrderBy(p => p.Familie)
-                .ToList();
+                    property(p) is not null 
+                    && PlantenParser.ParseSearchText(property(p))
+                        .Contains(PlantenParser.ParseSearchText(propertyValue)))
+                .OrderBy(property);
+        }
+        
+        public IEnumerable<Plant> SearchPlantenByName(string name)
+        {
+            return SearchPlantenByProperty(p => p.Fgsv, name);
         }
 
-        public List<Plant> GetPlantenByGeslacht(string gender)
+        public IEnumerable<Plant> SearchPlantenByFamily(string family)
         {
-            return GetPlanten().Where(p =>
-                    (p.Geslacht is not null && Parse(p.Geslacht).Contains(gender)))
-                .OrderBy(p => p.Geslacht)
-                .ToList();
+            return SearchPlantenByProperty(p => p.Familie, family);
         }
 
-        public List<Plant> GetPlantenBySoort(string kind)
+        public IEnumerable<Plant> SearchPlantenByGeslacht(string genus)
         {
-            return GetPlanten().Where(p =>
-                    (p.Soort is not null && Parse(p.Soort).Contains(kind)))
-                .OrderBy(p => p.Soort)
-                .ToList();
+            return SearchPlantenByProperty(p => p.Geslacht, genus);
         }
 
-        public List<Plant> GetPlantenByVariant(string variant)
+        public IEnumerable<Plant> SearchPlantenBySoort(string species)
         {
-            return GetPlanten().Where(p =>
-                    (p.Variant is not null && Parse(p.Variant).Contains(Parse(variant))))
-                .OrderBy(p => p.Variant)
-                .ToList();
+            return SearchPlantenByProperty(p => p.Soort, species);
         }
 
-        private static string Parse(string text)
+        public IEnumerable<Plant> SearchPlantenByVariant(string variant)
         {
-            return RemoveAccentCharacters(text.Trim().ToLower().Replace("'", ""));
-        }
-
-        private static string RemoveAccentCharacters(string originalText)
-        {
-            var newText = string.Empty;
-            
-            foreach (var c in originalText.Normalize(NormalizationForm.FormD)
-                .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark))
-            {
-                newText += c;
-            }
-
-            return newText;
+            return SearchPlantenByProperty(p => p.Variant, variant);
         }
     }
 }

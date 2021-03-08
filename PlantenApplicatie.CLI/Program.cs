@@ -2,7 +2,6 @@
 using PlantenApplicatie.Domain;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PlantenApplicatie.CLI
 {
@@ -14,18 +13,14 @@ namespace PlantenApplicatie.CLI
         {
             _plantenDao = PlantenDao.Instance;
 
-            PrintPlanten(_plantenDao.GetPlantenByName("vinca minor"));
+            PrintPlanten(_plantenDao.SearchPlantenByName("Veronicastrum"));
         }
 
-        private static void PrintPlanten(List<Plant> planten)
+        private static void PrintPlanten(IEnumerable<Plant> planten)
         {
             foreach (var plant in planten)
             {
-                Console.WriteLine($"{plant.Fgsv}:");
-                /*Console.WriteLine($"\tFamilie: {plant.Familie}");
-                Console.WriteLine($"\tGeslacht: {plant.Geslacht}");
-                Console.WriteLine($"\tSoort: {plant.Soort}");
-                Console.WriteLine($"\tVariant: {plant.Variant}\n");*/
+                Console.WriteLine($"{plant.Fgsv}");
             }
         }
     }
