@@ -25,12 +25,17 @@ namespace PlantenApplicatie
         {
             InitializeComponent();
             plantenDAO = PlantenDao.Instance();
+            Start();
+
+        }
+
+        private void Start()
+        {
             cmbFamilie.ItemsSource = plantenDAO.getFamilies();
             cmbGeslacht.ItemsSource = plantenDAO.getGeslachten();
             cmbSoort.ItemsSource = plantenDAO.getSoorten();
             cmbType.ItemsSource = plantenDAO.getTypes();
             lvPlanten.ItemsSource = plantenDAO.GetPlanten();
-
         }
 
         private void txtPlantnaam_KeyDown(object sender, KeyEventArgs e)
@@ -42,10 +47,33 @@ namespace PlantenApplicatie
             }
         }
 
-        private void btnDetailsPlant_Click_1(object sender, RoutedEventArgs e)
+        private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
         {
             PlantDetails plantDetails = new PlantDetails();
             plantDetails.Show();
+        }
+
+        private void txtNLnaam_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                MessageBox.Show("abc");
+                //lvPlanten.ItemsSource = getPlantenByName(sender.ToString());
+            }
+        }
+
+        private void txtVariant_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                MessageBox.Show("abc");
+                //lvPlanten.ItemsSource = getPlantenByName(sender.ToString());
+            }
+        }
+
+        private void btnZoeken_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
