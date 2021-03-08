@@ -13,23 +13,13 @@ using System.Windows.Shapes;
 namespace PlantenApplicatie
 {
     /// <summary>
-    /// Interaction logic for BeheerFamilie.xaml
+    /// Interaction logic for BeheerPlanten.xaml
     /// </summary>
-    public partial class BeheerFamilie : Window
+    public partial class BeheerPlanten : Window
     {
-        public BeheerFamilie()
+        public BeheerPlanten()
         {
             InitializeComponent();
-        }
-
-        private void btnFamilieToevoegen_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnHoofdMenu_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
