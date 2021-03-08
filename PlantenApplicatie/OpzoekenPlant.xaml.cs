@@ -31,10 +31,10 @@ namespace PlantenApplicatie
 
         private void Start()
         {
-            cmbFamilie.ItemsSource = plantenDAO.getFamilies();
-            cmbGeslacht.ItemsSource = plantenDAO.getGeslachten();
-            cmbSoort.ItemsSource = plantenDAO.getSoorten();
-            cmbType.ItemsSource = plantenDAO.getTypes();
+            cmbFamilie.ItemsSource = plantenDAO.GetFamilies();
+            cmbGeslacht.ItemsSource = plantenDAO.GetGeslachten();
+            cmbSoort.ItemsSource = plantenDAO.GetSoorten();
+            cmbType.ItemsSource = plantenDAO.GetTypes();
             lvPlanten.ItemsSource = plantenDAO.GetPlanten();
         }
 

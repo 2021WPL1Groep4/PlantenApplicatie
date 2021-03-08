@@ -7,7 +7,7 @@ namespace PlantenApplicatie.Data
 {
     public class PlantenDao
     {
-        public static readonly PlantenDao instance = new PlantenDao();
+        private static readonly PlantenDao instance = new PlantenDao();
 
         public static PlantenDao Instance()
         {
@@ -30,7 +30,7 @@ namespace PlantenApplicatie.Data
             return _context.Plant.ToList();
         }
         
-        public Plant getPlantenByName(string name)
+        public Plant GetPlantenByName(string name)
         {
             var plantenbyname = _context.Plant.FirstOrDefault(a => a.Fgsv == name);
             return plantenbyname;
@@ -40,7 +40,7 @@ namespace PlantenApplicatie.Data
          * FAMILIE
          */
 
-        public List<string> getFamilies()
+        public List<string> GetFamilies()
         {
             // return _context.TfgsvFamilie.ToList();
 
@@ -55,7 +55,7 @@ namespace PlantenApplicatie.Data
          * TYPE
          */
 
-        public List<TfgsvType> getTypes()
+        public List<TfgsvType> GetTypes()
         {
             return _context.TfgsvType.ToList();
         }
@@ -64,7 +64,7 @@ namespace PlantenApplicatie.Data
          * SOORT
          */
 
-        public List<string> getSoorten()
+        public List<string> GetSoorten()
         {
             // return _context.TfgsvSoort.ToList();
             var result = _context.TfgsvSoort.Select(s => s.Soortnaam).Distinct().ToList();
@@ -76,7 +76,7 @@ namespace PlantenApplicatie.Data
          * GESLACHT
          */
 
-        public List<string> getGeslachten()
+        public List<string> GetGeslachten()
         {
             //return _context.TfgsvGeslacht.ToList();
 

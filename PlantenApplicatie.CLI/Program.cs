@@ -11,7 +11,7 @@ namespace PlantenApplicatie.CLI
 
         static void Main(string[] args)
         {
-            _plantenDao = PlantenDao.instance;
+            _plantenDao = PlantenDao.Instance();
 
             // PrintPlanten(_plantenDao.SearchPlantenByName("Veronicastrum"));
 
