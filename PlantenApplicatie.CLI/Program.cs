@@ -12,8 +12,9 @@ namespace PlantenApplicatie.CLI
         static void Main(string[] args)
         {
             _plantenDao = PlantenDao.Instance;
-
-            PrintPlanten(_plantenDao.SearchPlantenByName("   vero"));
+            
+            // this is broken because implementation change
+            //PrintPlanten(_plantenDao.SearchPlantenByName("   vero"));
         }
 
         private static void PrintPlanten(List<Plant> planten)

@@ -46,5 +46,19 @@ namespace PlantenApplicatie
             PlantDetails plantDetails = new PlantDetails();
             plantDetails.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string family = cmbFamilie.SelectedValue is null ? null : cmbFamilie.SelectedValue.ToString();
+            string genus = cmbGeslacht.SelectedValue is null ? null : cmbGeslacht.SelectedValue.ToString();
+            string species = cmbSoort.SelectedValue is null ? null : cmbSoort.SelectedValue.ToString();
+
+            var list = plantenDAO.SearchByProperties(txtPlantnaam.Text,
+                family, genus,
+                species, txtVariant.Text);
+
+            lvPlanten.ItemsSource = list;
+
+        }
     }
 }

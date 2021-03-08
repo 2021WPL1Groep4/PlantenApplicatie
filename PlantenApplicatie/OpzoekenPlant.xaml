@@ -26,8 +26,8 @@
                     <ComboBox x:Name="cmbSoort" Width="200" Canvas.Top="65" Canvas.Left="80"  />
                     <Label Content="Variant :" Canvas.Top="60" Canvas.Left="350" />
                     <!-- vierde rij-->
-                    <Button Content="Zoeken" Canvas.Top="107" Width="80" Canvas.Left="688"/>
-                    <TextBox Height="19" Canvas.Left="450" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123"/>
+                    <Button Content="Zoeken" Canvas.Top="107" Width="80" Canvas.Left="688" Click="Button_Click"/>
+                    <TextBox x:Name="txtVariant" Height="19" Canvas.Left="450" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123"/>
                     <Label Canvas.Top="99" Content="Naam:"/>
                     <TextBox x:Name="txtNLNaam" Width="200" Canvas.Top="103" Canvas.Left="80" Text="Typ de nederlandse naam" KeyDown="txtPlantnaam_KeyDown"  />
                 </Canvas>
