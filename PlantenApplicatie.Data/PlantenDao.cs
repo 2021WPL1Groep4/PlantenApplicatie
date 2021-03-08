@@ -21,41 +21,41 @@ namespace PlantenApplicatie.Data
 
         public static PlantenDao Instance { get; }
 
-        public IEnumerable<Plant> GetPlanten()
+        public List<Plant> GetPlanten()
         {
             return _context.Plant.ToList();
         }
         
-        private IEnumerable<Plant> SearchPlantenByProperty(Func<Plant, string> property, string propertyValue)
+        private List<Plant> SearchPlantenByProperty(Func<Plant, string> property, string propertyValue)
         {
             return GetPlanten().Where(p =>
                     property(p) is not null 
                     && PlantenParser.ParseSearchText(property(p))
                         .Contains(PlantenParser.ParseSearchText(propertyValue)))
-                .OrderBy(property);
+                .OrderBy(property).ToList();
         }
         
-        public IEnumerable<Plant> SearchPlantenByName(string name)
+        public List<Plant> SearchPlantenByName(string name)
         {
             return SearchPlantenByProperty(p => p.Fgsv, name);
         }
 
-        public IEnumerable<Plant> SearchPlantenByFamily(string family)
+        public List<Plant> SearchPlantenByFamily(string family)
         {
             return SearchPlantenByProperty(p => p.Familie, family);
         }
 
-        public IEnumerable<Plant> SearchPlantenByGenus(string genus)
+        public List<Plant> SearchPlantenByGenus(string genus)
         {
             return SearchPlantenByProperty(p => p.Geslacht, genus);
         }
 
-        public IEnumerable<Plant> SearchPlantenBySpecies(string species)
+        public List<Plant> SearchPlantenBySpecies(string species)
         {
             return SearchPlantenByProperty(p => p.Soort, species);
         }
 
-        public IEnumerable<Plant> SearchPlantenByVariant(string variant)
+        public List<Plant> SearchPlantenByVariant(string variant)
         {
             return SearchPlantenByProperty(p => p.Variant, variant);
         }
