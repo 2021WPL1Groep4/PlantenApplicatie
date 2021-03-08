@@ -14,6 +14,11 @@ namespace PlantenApplicatie.CLI
             _plantenDao = PlantenDao.instance;
 
             // PrintPlanten(_plantenDao.SearchPlantenByName("Veronicastrum"));
+
+            foreach (var plant in _plantenDao.ZoekPlantenOpNaam("Bergenia Flirt"))
+            {
+                Console.WriteLine(plant.Fgsv);
+            }
         }
 
         private static void PrintPlanten(IEnumerable<Plant> planten)

@@ -40,9 +40,15 @@ namespace PlantenApplicatie.Data
          * FAMILIE
          */
 
-        public List<TfgsvFamilie> getFamilies()
+        public List<string> getFamilies()
         {
-            return _context.TfgsvFamilie.ToList();
+            // return _context.TfgsvFamilie.ToList();
+
+            var result = _context.TfgsvFamilie.Select(f => f.Familienaam).Distinct().ToList();
+
+            return result;
+
+
         }
 
         /* 
@@ -58,18 +64,30 @@ namespace PlantenApplicatie.Data
          * SOORT
          */
 
-        public List<TfgsvSoort> getSoorten()
+        public List<string> getSoorten()
         {
-            return _context.TfgsvSoort.ToList();
+            // return _context.TfgsvSoort.ToList();
+            var result = _context.TfgsvSoort.Select(s => s.Soortnaam).Distinct().ToList();
+
+            return result;
         }
 
         /*
          * GESLACHT
          */
 
-        public List<TfgsvGeslacht> getGeslachten()
+        public List<string> getGeslachten()
         {
-            return _context.TfgsvGeslacht.ToList();
+            //return _context.TfgsvGeslacht.ToList();
+
+            var result = _context.TfgsvGeslacht.Select(g => g.Geslachtnaam).Distinct().ToList();
+
+            return result;
+        }
+
+        public List<Plant> ZoekPlantenOpNaam(string name)
+        {
+            return _context.Plant.Where(p => p.Fgsv == name).ToList();
         }
 
         /*
