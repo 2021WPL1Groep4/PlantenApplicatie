@@ -33,7 +33,7 @@
                         <Button Width="150" Height="25" Content="Familie toevoegen" Click="btnFamilieToevoegen_Click" Name="btnFamilieToevoegen" Canvas.Top="325" Canvas.Left="25"/>
                         <Button Width="150" Height="25" Content="Terug naar hoofdmenu" Click="btnHoofdMenu_Click" Name="btnHoofdMenu" Canvas.Top="330" Canvas.Right="25" />
                         <TextBox Canvas.Left="180" Canvas.Top="27" Text="automatisch id genereren +1" TextWrapping="Wrap" Width="183"/>
-                        <Label Width="150" Content="FamilieId: " Canvas.Top="75" Canvas.Left="25" />
+                        <Label Width="150" Content="FamilieNaam: " Canvas.Top="75" Canvas.Left="25" />
                     </Canvas>
                 </TabItem>
 
