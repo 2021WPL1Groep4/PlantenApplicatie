@@ -115,9 +115,7 @@ namespace PlantenApplicatie.viewmodels
             
             // nieuw venster initialiseren
             PlantDetails plantDetails = new PlantDetails();
-            // object Plant toewijzen door geselecteerd item uit listview te casten
-            _selectedPlant = SelectedPlant;
-            plant = _selectedPlant;
+            
             // initialiseer labels en waarden
             plantDetails.lblPlantnaamGroot.Content = _selectedPlant.Fgsv;
             plantDetails.lblFamilieResult.Content = _selectedPlant.Familie;
