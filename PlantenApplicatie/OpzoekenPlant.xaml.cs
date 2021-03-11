@@ -91,7 +91,7 @@ namespace PlantenApplicatie
                 species, txtVariant.Text);
 
             lvPlanten.ItemsSource = list;
-            
+
             ResetInputFields();
         }
     }

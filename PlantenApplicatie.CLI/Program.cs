@@ -12,7 +12,10 @@ namespace PlantenApplicatie.CLI
         static void Main(string[] args)
         {
             _plantenDao = PlantenDao.Instance;
-
+            
+            PrintPlanten(_plantenDao.SearchPlantenByProperties("abc", "FABACEAE", "Baptisia", 
+                "australis", "'Twilight Prairieblues'"));
+            //PrintPlanten(_plantenDao.GetPlanten());
             //PrintPlanten(_plantenDao.SearchPlantenByName("   vero"));
         }
 
