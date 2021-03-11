@@ -13,11 +13,10 @@
 
             <Image x:Name="imgFoto" Height="200" Width="200" Canvas.Top="108" Canvas.Left="691" />
             <Button x:Name="btnSluiten" Content="Sluiten" Canvas.Left="766" Canvas.Top="517" Width="124" Click="btnSluiten_Click" Height="34"/>
-            <ComboBox Canvas.Left="655" Canvas.Top="20" Width="235" Height="32"/>
             <Label Content="Bezonning :" Canvas.Left="50" Canvas.Top="81" Height="34" Width="161" FontSize="16"/>
             <Label Content="bladgrootte :" Canvas.Left="50" Canvas.Top="135" Height="34" Width="161" FontSize="16"/>
             <Label Content="bladvorm :" Canvas.Left="50" Canvas.Top="188" Height="34" Width="161" FontSize="16"/>
-            <ListBox Height="246" Canvas.Left="573" Canvas.Top="87" Width="105"/>
+
             <Label Content="habitus :" Canvas.Left="50" Canvas.Top="241" Height="34" Width="161" FontSize="16"/>
             <Label Content="bloeiwijze :" Canvas.Left="50" Canvas.Top="298" Height="34" Width="161" FontSize="16"/>
             <Label Content="levensvorm :" Canvas.Left="50" Canvas.Top="353" Height="34" Width="161" FontSize="16"/>
@@ -28,12 +27,7 @@
             <Label Content="(Bloeiwijze)" Canvas.Left="186" Canvas.Top="299" Height="34" Width="161" FontSize="16"/>
             <Label Content="(Levensvorm)" Canvas.Left="186" Canvas.Top="353" Height="34" Width="161" FontSize="16"/>
             <ComboBox x:Name="cmbEigenschappen" Canvas.Left="671" Canvas.Top="25" Width="219" Height="20" SelectionChanged="cmbEigenschappen_SelectionChanged"/>
-            <Label Content="Bezonning" Canvas.Left="25" Canvas.Top="87" Height="34" Width="161" FontSize="16"/>
-            <Label Content="bladgrootte" Canvas.Left="25" Canvas.Top="191" Height="34" Width="161" FontSize="16"/>
-            <Label Content="bladvorm" Canvas.Left="25" Canvas.Top="258" Height="34" Width="161" FontSize="16"/>
             <ListBox x:Name="lstLijst" Height="246" Canvas.Left="559" Canvas.Top="87" Width="119"/>
-            <Label Content="habitus" Canvas.Left="25" Canvas.Top="332" Height="34" Width="161" FontSize="16"/>
-            <Label Content="bloeiwijze" Canvas.Left="25" Canvas.Top="398" Height="34" Width="161" FontSize="16"/>
 
         </Canvas>
     </Grid>
