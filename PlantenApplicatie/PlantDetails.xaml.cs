@@ -65,14 +65,17 @@ namespace PlantenApplicatie
                     break;
                 case "Beheer":
                     lstLijst.Visibility = Visibility.Visible;
+                    ChangeToBeheer();
 
                     break;
                 case "Extra's":
                     lstLijst.Visibility = Visibility.Collapsed;
+                    ChangeToExtra();
 
                     break;
                 case "Commensalisme":
                     lstLijst.Visibility = Visibility.Collapsed;
+                    ChangeToCommensalisme();
 
                     break;
 
