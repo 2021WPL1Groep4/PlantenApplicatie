@@ -55,10 +55,12 @@ namespace PlantenApplicatie
             {
                 case "FenoType":
                     lstLijst.Visibility = Visibility.Visible;
+                    ChangeToFenotype();
 
                     break;
                 case "Abiotiek":
                     lstLijst.Visibility = Visibility.Collapsed;
+                    ChangeToAbiotiek();
 
                     break;
                 case "Beheer":
@@ -80,9 +82,10 @@ namespace PlantenApplicatie
         }
         private void ChangeToFenotype()
         {
-            lblBezonning.Content = "Bezonning :";
+            
             lblBladgrootte.Content = "Bladgrootte :";
             lblBladvorm.Content = "Bladvorm :";
+            lblRatio.Content = "Ratio Bloei/Blad :";
             lblBloeiwijze.Content = "Bloeiwijze :";
             lblHabitus.Content = "Habitus :";
             lblLevensvorm.Content = "Levensvorm :";
@@ -90,9 +93,23 @@ namespace PlantenApplicatie
 
         private void ChangeToAbiotiek()
         {
-            lblBezonning.Content = "Bezonning :";
-            lblBladgrootte.Content = "Grondsoort :";
-            lblBladvorm.Content = "Vochtbehoefte :";
+            
+            lblBladgrootte.Content = "Bezonning :";
+            lblBladvorm.Content = "Grondsoort :";
+            lblRatio.Content = "Vochtbehoefte :";
+            lblBloeiwijze.Content = "Voedingsbehoefte :";
+            lblHabitus.Content = "Antagonische omgeving :";
+            lblLevensvorm.Content = "";
+        }
+        private void ChangeToBeheer()
+        {
+
+        }
+        private void ChangeToExtra()
+        {
+            lblBladgrootte.Content = "Nectarwaarde :";
+            lblBladvorm.Content = "Pollenwaarde :";
+            lblRatio.Content = "Vochtbehoefte :";
             lblBloeiwijze.Content = "Voedingsbehoefte :";
             lblHabitus.Content = "Antagonische omgeving :";
             lblLevensvorm.Content = "";

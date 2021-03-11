@@ -20,12 +20,12 @@
             <Label x:Name="lblHabitus" Content="habitus :" Canvas.Left="50" Canvas.Top="241" Height="34" Width="161" FontSize="16"/>
             <Label x:Name="lblBloeiwijze" Content="bloeiwijze :" Canvas.Left="50" Canvas.Top="353" Height="34" Width="161" FontSize="16"/>
             <Label x:Name="lblLevensvorm" Content="levensvorm :" Canvas.Left="50" Canvas.Top="417" Height="34" Width="161" FontSize="16"/>
-            <Label Content="(Bezonning)" Canvas.Left="186" Canvas.Top="412" Height="34" Width="161" FontSize="16"/>
+            <Label Content="(Bezonning)" Canvas.Left="186" Canvas.Top="299" Height="34" Width="161" FontSize="16"/>
             <Label Content="(Bladgrootte)" Canvas.Left="186" Canvas.Top="135" Height="34" Width="161" FontSize="16"/>
             <Label Content="(Bladvorm)" Canvas.Left="186" Canvas.Top="188" Height="34" Width="161" FontSize="16"/>
             <Label Content="(Habitus)" Canvas.Left="186" Canvas.Top="241" Height="34" Width="161" FontSize="16"/>
-            <Label Content="(Bloeiwijze)" Canvas.Left="186" Canvas.Top="299" Height="34" Width="161" FontSize="16"/>
-            <Label Content="(Levensvorm)" Canvas.Left="186" Canvas.Top="353" Height="34" Width="161" FontSize="16"/>
+            <Label Content="(Bloeiwijze)" Canvas.Left="186" Canvas.Top="353" Height="34" Width="161" FontSize="16"/>
+            <Label Content="(Levensvorm)" Canvas.Left="186" Canvas.Top="417" Height="34" Width="161" FontSize="16"/>
             <ComboBox x:Name="cmbEigenschappen" Canvas.Left="671" Canvas.Top="25" Width="219" Height="20" SelectionChanged="cmbEigenschappen_SelectionChanged"/>
             <ListBox x:Name="lstLijst" Height="246" Canvas.Left="559" Canvas.Top="87" Width="119"/>
 
