@@ -12,7 +12,7 @@ namespace PlantenApplicatie.viewmodels
 {
     class BeheerPlantenViewModel : ViewModelBase
     {
-        public ICommand showPlantsCommand { get; set; }
+        public ICommand showPlantDetailsCommand { get; set; }
 
         public ObservableCollection<Plant> Plants { get; set; }
 
@@ -29,6 +29,8 @@ namespace PlantenApplicatie.viewmodels
 
         public BeheerPlantenViewModel(PlantenDao plantenDao)
         {
+            showPlantDetailsCommand = new DelegateCommand(showPlantDetails);
+
             Plants = new ObservableCollection<Plant>();
             Types = new ObservableCollection<TfgsvType>();
             Soorten = new ObservableCollection<string>();
@@ -36,6 +38,11 @@ namespace PlantenApplicatie.viewmodels
             Genus = new ObservableCollection<string>();
 
             this._plantenDao = plantenDao;
+        }
+
+        private void showPlantDetails()
+        {
+            GetPlantDetails();
         }
 
         public void LoadPlants()
@@ -94,22 +101,21 @@ namespace PlantenApplicatie.viewmodels
             set
             {
                 _selectedPlant = value;
-                //LoadAnimalsInZoo();
 
                 if (value is not null)
                 {
-                    //TextInput = value.Fgsv;
+
                 }
                 OnPropertyChanged();
             }
         }
 
-        public void GetPlantDetails(ListView lv)
+        public void GetPlantDetails()
         {
             // nieuw venster initialiseren
             PlantDetails plantDetails = new PlantDetails();
             // object Plant toewijzen door geselecteerd item uit listview te casten
-            _selectedPlant = (Plant)lv.SelectedItem;
+            _selectedPlant = SelectedPlant;
 
             // initialiseer labels en waarden
             plantDetails.lblPlantnaam.Content = _selectedPlant.Fgsv;

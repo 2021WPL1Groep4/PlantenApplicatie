@@ -36,13 +36,15 @@ namespace PlantenApplicatie
 
         }
 
+        /*
+       
         private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
         {
 
-            beheerPlantenViewModel.GetPlantDetails(lvPlanten);
-        }
+            beheerPlantenViewModel.GetPlantDetails();
+        } 
 
-        /*
+        
         private PlantenDao plantenDao;
 
         public BeheerPlanten()

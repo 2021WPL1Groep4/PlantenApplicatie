@@ -38,7 +38,8 @@
                         <GroupBox Header="Resultaten" Height="265">
                             <Canvas>
                                 <ListView x:Name="lvPlanten" Canvas.Left="10" Height="218" Width="1036"
-                                          ItemsSource="{Binding Plants}" >
+                                          ItemsSource="{Binding Plants}" 
+                                          SelectedItem="{Binding SelectedPlant, Mode=TwoWay}">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="Plantnaam" Width="Auto" DisplayMemberBinding="{Binding Fgsv}" />
@@ -57,7 +58,8 @@
                         <!-- knop details plant -->
                         <Grid Height="50">
                             <Canvas>
-                                <Button x:Name="btnDetailsPlant" Canvas.Top="15" Canvas.Left="21" Width="150" Content="Details plant bekijken" Click="btnDetailsPlant_Click" />
+                                <Button x:Name="btnDetailsPlant" Canvas.Top="15" Canvas.Left="21" Width="150"
+                                        Content="Details plant bekijken" Command="{Binding Path=showPlantDetailsCommand}" />
 
                             </Canvas>
                         </Grid>
