@@ -60,7 +60,7 @@ namespace PlantenApplicatie
 
         private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
         {
-            GetPlantDetails(lvPlanten);
+          
         }
 
         private void txtNLnaam_KeyDown(object sender, KeyEventArgs e)
@@ -98,24 +98,6 @@ namespace PlantenApplicatie
 
        
 
-        public void GetPlantDetails(ListView lv)
-        {
-            // nieuw venster initialiseren
-            PlantDetails plantDetails = new PlantDetails();
-            // object Plant toewijzen door geselecteerd item uit listview te casten
-            _selectedPlant = (Plant)lv.SelectedItem;
 
-            // initialiseer labels en waarden
-            //plantDetails.lblGroep.Content = _plant.;
-            plantDetails.lblPlantnaam.Content = _selectedPlant.Fgsv;
-            plantDetails.lblBladGrootteResult.Content = _selectedPlant.Familie;
-            
-            plantDetails.lblBladvormResult.Content = _selectedPlant.Geslacht;
-            plantDetails.lblHabitusResult.Content = _selectedPlant.Soort;
-            plantDetails.lblRatioResult.Content = _selectedPlant.Variant;
-
-            // toon plantdetails venster
-            plantDetails.Show();
-        }
     }
 }

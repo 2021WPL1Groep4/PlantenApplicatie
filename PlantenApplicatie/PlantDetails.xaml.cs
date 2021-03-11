@@ -1,5 +1,6 @@
 ﻿using PlantenApplicatie.Data;
 using PlantenApplicatie.Domain;
+using PlantenApplicatie.viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,12 +25,12 @@ namespace PlantenApplicatie
        
         private PlantenDao plantenDAO;
 
-        private Plant plant;
+    
         public PlantDetails()
         {
             InitializeComponent();
             plantenDAO = PlantenDao.Instance;
-            plant = (Plant)lblPlantnaam.Content;
+          
             
             Start();
         }
@@ -102,7 +103,7 @@ namespace PlantenApplicatie
 
         private void ChangeToPlant()
         {
-            lblType.Content = plant.Fgsv;
+            lblTypeResult.Content = BeheerPlantenViewModel.plant.Type;
        
           
         }
