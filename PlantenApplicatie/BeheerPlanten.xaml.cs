@@ -1,4 +1,5 @@
 ﻿using PlantenApplicatie.Data;
+using PlantenApplicatie.viewmodels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,6 +19,30 @@ namespace PlantenApplicatie
     /// </summary>
     public partial class BeheerPlanten : Window
     {
+        private BeheerPlantenViewModel beheerPlantenViewModel;
+
+        public BeheerPlanten()
+        {
+            InitializeComponent();
+            beheerPlantenViewModel = new BeheerPlantenViewModel(
+                PlantenDao.Instance);
+            DataContext = beheerPlantenViewModel;
+            beheerPlantenViewModel.LoadPlants();
+            beheerPlantenViewModel.LoadTypes();
+            beheerPlantenViewModel.LoadSoorten();
+            beheerPlantenViewModel.LoadFamilies();
+            beheerPlantenViewModel.LoadGenus();
+
+
+        }
+
+        private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
+        {
+
+            beheerPlantenViewModel.GetPlantDetails(lvPlanten);
+        }
+
+        /*
         private PlantenDao plantenDao;
 
         public BeheerPlanten()
@@ -73,7 +98,10 @@ namespace PlantenApplicatie
         private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
         {
             PlantDetails plantDetails = new PlantDetails();
+            
             plantDetails.Show();
         }
+        */
     }
+        
 }
