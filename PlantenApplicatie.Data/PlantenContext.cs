@@ -782,6 +782,12 @@ namespace PlantenApplicatie.Data
                 entity.Property(e => e.Variantnaam)
                     .HasColumnName("variantnaam")
                     .HasMaxLength(100);
+
+                entity.HasOne(d => d.SoortSoort)
+                    .WithMany(p => p.TfgsvVariant)
+                    .HasForeignKey(d => d.SoortSoortid)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Tfgsv_Variant_Tfgsv_Soort");
             });
 
             modelBuilder.Entity<UpdatePlant>(entity =>

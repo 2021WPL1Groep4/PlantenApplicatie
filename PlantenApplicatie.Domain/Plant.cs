@@ -35,6 +35,7 @@ namespace PlantenApplicatie.Domain
         public int? GeslachtId { get; set; }
         public int? SoortId { get; set; }
         public int? VariantId { get; set; }
+
         public virtual ICollection<Abiotiek> Abiotiek { get; set; }
         public virtual ICollection<AbiotiekMulti> AbiotiekMulti { get; set; }
         public virtual ICollection<BeheerMaand> BeheerMaand { get; set; }
