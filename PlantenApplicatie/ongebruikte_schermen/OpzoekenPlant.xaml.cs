@@ -40,7 +40,7 @@ namespace PlantenApplicatie
 
         private void ResetInputFields()
         {
-            txtPlantnaam.Text = string.Empty;
+          
             txtNLNaam.Text = string.Empty;
             cmbFamilie.SelectedValue = null;
             cmbGeslacht.SelectedValue = null;

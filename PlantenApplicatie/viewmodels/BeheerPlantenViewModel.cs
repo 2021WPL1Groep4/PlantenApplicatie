@@ -13,6 +13,7 @@ namespace PlantenApplicatie.viewmodels
     class BeheerPlantenViewModel : ViewModelBase
     {
         public ICommand showPlantDetailsCommand { get; set; }
+        public ICommand showPlantByNameCommand { get; set; }
 
         public ObservableCollection<Plant> Plants { get; set; }
 
@@ -25,11 +26,15 @@ namespace PlantenApplicatie.viewmodels
         // hiermee kunnen we de data opvragen aan de databank.
         public PlantenDao _plantenDao;
 
+        // dit stelt de huidige geselecteerde plant voor
         private Plant _selectedPlant;
+
+        private string textInput;
 
         public BeheerPlantenViewModel(PlantenDao plantenDao)
         {
             showPlantDetailsCommand = new DelegateCommand(showPlantDetails);
+            showPlantByNameCommand = new DelegateCommand(showPlantByName);
 
             Plants = new ObservableCollection<Plant>();
             Types = new ObservableCollection<TfgsvType>();
@@ -38,11 +43,6 @@ namespace PlantenApplicatie.viewmodels
             Genus = new ObservableCollection<string>();
 
             this._plantenDao = plantenDao;
-        }
-
-        private void showPlantDetails()
-        {
-            GetPlantDetails();
         }
 
         public void LoadPlants()
@@ -101,21 +101,18 @@ namespace PlantenApplicatie.viewmodels
             set
             {
                 _selectedPlant = value;
-
-                if (value is not null)
-                {
-
-                }
                 OnPropertyChanged();
             }
         }
 
-        public void GetPlantDetails()
+
+        private void showPlantDetails()
         {
             // nieuw venster initialiseren
             PlantDetails plantDetails = new PlantDetails();
             // object Plant toewijzen door geselecteerd item uit listview te casten
             _selectedPlant = SelectedPlant;
+            
 
             // initialiseer labels en waarden
             plantDetails.lblPlantnaam.Content = _selectedPlant.Fgsv;
@@ -127,6 +124,25 @@ namespace PlantenApplicatie.viewmodels
 
             // toon plantdetails venster
             plantDetails.Show();
+        }
+
+        private void showPlantByName()
+        {
+            _plantenDao.SearchPlantenByName(_plantenDao.GetPlanten(), TextInput);
+            LoadPlants();
+        }
+
+        public string TextInput
+        {
+            get
+            {
+                return textInput;
+            }
+            set
+            {
+                textInput = value;
+                OnPropertyChanged();
+            }
         }
     }
 }

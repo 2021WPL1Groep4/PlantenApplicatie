@@ -15,7 +15,13 @@
                             <Canvas Margin="10">
                                 <!-- eerste rij -->
                                 <Label Canvas.Top="0" Content="Plantnaam :"/>
-                                <TextBox x:Name="txtPlantnaam" Width="200" Canvas.Top="5" Canvas.Left="80" Text="Typ een plantnaam" />
+                                <TextBox x:Name="txtPlantnaam" Width="200" Canvas.Top="5" Canvas.Left="80"
+                                         
+                                        Text="{Binding Path=TextInput, Mode=TwoWay }">
+                                        <TextBox.InputBindings>
+                                        <KeyBinding Command="{Binding Path=showPlantByNameCommand}" Key="Delete" />
+                                        </TextBox.InputBindings>
+                                </TextBox>
                                 <Label Canvas.Top="0" Canvas.Left="350" Content="Familie :"/>
                                 <ComboBox x:Name="cmbFamilie" Canvas.Top="5" Canvas.Left="450" Width="200"  ItemsSource="{Binding Families }" />
                                 <!-- tweede rij -->
@@ -39,7 +45,7 @@
                             <Canvas>
                                 <ListView x:Name="lvPlanten" Canvas.Left="10" Height="218" Width="1036"
                                           ItemsSource="{Binding Plants}" 
-                                          SelectedItem="{Binding SelectedPlant, Mode=TwoWay}">
+                                          SelectedItem="{Binding SelectedPlant}">
                                     <ListView.View>
                                         <GridView>
                                             <GridViewColumn Header="Plantnaam" Width="Auto" DisplayMemberBinding="{Binding Fgsv}" />
