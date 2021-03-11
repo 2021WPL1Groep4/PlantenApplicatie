@@ -114,7 +114,7 @@ namespace PlantenApplicatie.viewmodels
             // initialiseer labels en waarden
             plantDetails.lblPlantnaam.Content = _selectedPlant.Fgsv;
             plantDetails.lblFamilie.Content = _selectedPlant.Familie;
-            plantDetails.lblGroep.Content = _selectedPlant.Type;
+            plantDetails.lblType.Content = _selectedPlant.Type;
             plantDetails.lblGeslacht.Content = _selectedPlant.Geslacht;
             plantDetails.lblSoort.Content = _selectedPlant.Soort;
             plantDetails.lblVariant.Content = _selectedPlant.Variant;
