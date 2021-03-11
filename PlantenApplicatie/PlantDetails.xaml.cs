@@ -24,12 +24,12 @@ namespace PlantenApplicatie
        
         private PlantenDao plantenDAO;
 
-        private Plant plant;
+        
         public PlantDetails()
         {
             InitializeComponent();
             plantenDAO = PlantenDao.Instance;
-            plant = (Plant)lblPlantnaam.Content;
+            
             
             Start();
         }
@@ -100,11 +100,18 @@ namespace PlantenApplicatie
         }
     
 
+        
         private void ChangeToPlant()
         {
-            lblType.Content = plant.Fgsv;
-       
-          
+
+            lblType.Content = "Type :";
+            lblFamilie.Content = "Familie :";
+            lblGeslacht.Content = "Geslacht :";
+            lblSoort.Content = "Soort :";
+            lblVariant.Content = "Variant :";
+            lblPlantdichtheidMax.Content = "Plantdichtheid max :";
+            lblPlantdichtheidMin.Content = "Plantdichtheid min :";
+            lblLaatste.Content = "";
         }
         private void ChangeToFenotype()
         {
@@ -165,6 +172,8 @@ namespace PlantenApplicatie
             lblPlantdichtheidMin.Content = "";
             lblLaatste.Content = "";
         }
+
+        
     }
 }
 
