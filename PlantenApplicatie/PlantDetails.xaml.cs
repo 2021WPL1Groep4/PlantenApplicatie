@@ -78,6 +78,25 @@ namespace PlantenApplicatie
                     break;
             }
         }
+        private void ChangeToFenotype()
+        {
+            lblBezonning.Content = "Bezonning :";
+            lblBladgrootte.Content = "Bladgrootte :";
+            lblBladvorm.Content = "Bladvorm :";
+            lblBloeiwijze.Content = "Bloeiwijze :";
+            lblHabitus.Content = "Habitus :";
+            lblLevensvorm.Content = "Levensvorm :";
+        }
+
+        private void ChangeToAbiotiek()
+        {
+            lblBezonning.Content = "Bezonning :";
+            lblBladgrootte.Content = "Grondsoort :";
+            lblBladvorm.Content = "Vochtbehoefte :";
+            lblBloeiwijze.Content = "Voedingsbehoefte :";
+            lblHabitus.Content = "Antagonische omgeving :";
+            lblLevensvorm.Content = "";
+        }
     }
 }
 

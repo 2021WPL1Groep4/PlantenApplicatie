@@ -13,14 +13,14 @@
 
             <Image x:Name="imgFoto" Height="200" Width="200" Canvas.Top="108" Canvas.Left="691" />
             <Button x:Name="btnSluiten" Content="Sluiten" Canvas.Left="766" Canvas.Top="517" Width="124" Click="btnSluiten_Click" Height="34"/>
-            <Label Content="Bezonning :" Canvas.Left="50" Canvas.Top="81" Height="34" Width="161" FontSize="16"/>
-            <Label Content="bladgrootte :" Canvas.Left="50" Canvas.Top="135" Height="34" Width="161" FontSize="16"/>
-            <Label Content="bladvorm :" Canvas.Left="50" Canvas.Top="188" Height="34" Width="161" FontSize="16"/>
+            <Label x:Name="lblRatio" Content="Bezonning :" Canvas.Left="50" Canvas.Top="299" Height="34" Width="161" FontSize="16"/>
+            <Label x:Name="lblBladgrootte" Content="bladgrootte :" Canvas.Left="50" Canvas.Top="130" Height="34" Width="161" FontSize="16"/>
+            <Label x:Name="lblBladvorm" Content="bladvorm :" Canvas.Left="50" Canvas.Top="188" Height="34" Width="161" FontSize="16"/>
 
-            <Label Content="habitus :" Canvas.Left="50" Canvas.Top="241" Height="34" Width="161" FontSize="16"/>
-            <Label Content="bloeiwijze :" Canvas.Left="50" Canvas.Top="298" Height="34" Width="161" FontSize="16"/>
-            <Label Content="levensvorm :" Canvas.Left="50" Canvas.Top="353" Height="34" Width="161" FontSize="16"/>
-            <Label Content="(Bezonning)" Canvas.Left="186" Canvas.Top="81" Height="34" Width="161" FontSize="16"/>
+            <Label x:Name="lblHabitus" Content="habitus :" Canvas.Left="50" Canvas.Top="241" Height="34" Width="161" FontSize="16"/>
+            <Label x:Name="lblBloeiwijze" Content="bloeiwijze :" Canvas.Left="50" Canvas.Top="353" Height="34" Width="161" FontSize="16"/>
+            <Label x:Name="lblLevensvorm" Content="levensvorm :" Canvas.Left="50" Canvas.Top="417" Height="34" Width="161" FontSize="16"/>
+            <Label Content="(Bezonning)" Canvas.Left="186" Canvas.Top="412" Height="34" Width="161" FontSize="16"/>
             <Label Content="(Bladgrootte)" Canvas.Left="186" Canvas.Top="135" Height="34" Width="161" FontSize="16"/>
             <Label Content="(Bladvorm)" Canvas.Left="186" Canvas.Top="188" Height="34" Width="161" FontSize="16"/>
             <Label Content="(Habitus)" Canvas.Left="186" Canvas.Top="241" Height="34" Width="161" FontSize="16"/>
