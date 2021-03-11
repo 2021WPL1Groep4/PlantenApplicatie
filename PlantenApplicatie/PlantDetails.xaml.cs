@@ -106,8 +106,13 @@ namespace PlantenApplicatie
         private void ChangeToPlant()
         {
             lblTypeResult.Content = BeheerPlantenViewModel.plant.Type;
-       
-          
+            lblFamilieResult.Content = BeheerPlantenViewModel.plant.Familie;
+            lblGeslachtResult.Content = BeheerPlantenViewModel.plant.Geslacht;
+            lblSoortResult.Content = BeheerPlantenViewModel.plant.Soort;
+            lblVariantResult.Content = BeheerPlantenViewModel.plant.Variant;
+            lblPlantdichtheidMaxResult.Content = BeheerPlantenViewModel.plant.PlantdichtheidMax;
+            lblPlantdichtheidMinResult.Content = BeheerPlantenViewModel.plant.PlantdichtheidMin;
+            lblLaatsteResult.Content = "";
 
             lblType.Content = "Type :";
             lblFamilie.Content = "Familie :";
@@ -120,7 +125,15 @@ namespace PlantenApplicatie
         }
         private void ChangeToFenotype()
         {
-            
+            lblTypeResult.Content = BeheerPlantenViewModel.plant.Type;
+            lblFamilieResult.Content = BeheerPlantenViewModel.plant.Familie;
+            lblGeslachtResult.Content = BeheerPlantenViewModel.plant.Geslacht;
+            lblSoortResult.Content = BeheerPlantenViewModel.plant.Soort;
+            lblVariantResult.Content = BeheerPlantenViewModel.plant.Variant;
+            lblPlantdichtheidMaxResult.Content = BeheerPlantenViewModel.plant.PlantdichtheidMax;
+            lblPlantdichtheidMinResult.Content = BeheerPlantenViewModel.plant.PlantdichtheidMin;
+            lblLaatsteResult.Content = "";
+
             lblType.Content = "Bladgrootte :";
             lblFamilie.Content = "Bladvorm :";
             lblGeslacht.Content = "Ratio Bloei/Blad :";
@@ -142,7 +155,7 @@ namespace PlantenApplicatie
             lblPlantdichtheidMax.Content = "Habitat :";
             lblPlantdichtheidMin.Content = "";
             lblLaatste.Content = "";
-            //lblBladGrootteResult.Content = plantenDAO.GetAbiotiek();
+            
         }
         private void ChangeToBeheer()
         {
