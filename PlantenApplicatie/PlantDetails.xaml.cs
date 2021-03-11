@@ -109,10 +109,11 @@ namespace PlantenApplicatie
         {
             lblBladgrootte.Content = "Nectarwaarde :";
             lblBladvorm.Content = "Pollenwaarde :";
-            lblRatio.Content = "Vochtbehoefte :";
-            lblBloeiwijze.Content = "Voedingsbehoefte :";
-            lblHabitus.Content = "Antagonische omgeving :";
-            lblLevensvorm.Content = "";
+            lblRatio.Content = "Bijvriendelijk :";
+            lblBloeiwijze.Content = "Vlindervriendelijk :";
+            lblHabitus.Content = "Eetbaar :";
+            lblLevensvorm.Content = "Kruidgebruik :";
+
         }
     }
 }
