@@ -102,68 +102,68 @@ namespace PlantenApplicatie
 
         private void ChangeToPlant()
         {
-            lblBladgrootte.Content = plant.Fgsv;
+            lblType.Content = plant.Fgsv;
        
           
         }
         private void ChangeToFenotype()
         {
             
-            lblBladgrootte.Content = "Bladgrootte :";
-            lblBladvorm.Content = "Bladvorm :";
-            lblRatio.Content = "Ratio Bloei/Blad :";
-            lblBloeiwijze.Content = "Bloeiwijze :";
-            lblHabitus.Content = "Habitus :";
-            lblLevensvorm.Content = "Levensvorm :";
-            lblGeurend.Content = "";
-            lblVorstGevoelig.Content = "";
+            lblType.Content = "Bladgrootte :";
+            lblFamilie.Content = "Bladvorm :";
+            lblGeslacht.Content = "Ratio Bloei/Blad :";
+            lblSoort.Content = "Bloeiwijze :";
+            lblVariant.Content = "Habitus :";
+            lblPlantdichtheidMax.Content = "Levensvorm :";
+            lblPlantdichtheidMin.Content = "";
+            lblLaatste.Content = "";
         }
 
         private void ChangeToAbiotiek()
         {
             
-            lblBladgrootte.Content = "Bezonning :";
-            lblBladvorm.Content = "Grondsoort :";
-            lblRatio.Content = "Vochtbehoefte :";
-            lblBloeiwijze.Content = "Voedingsbehoefte :";
-            lblHabitus.Content = "Antagonische omgeving :";
-            lblLevensvorm.Content = "Habitat :";
-            lblGeurend.Content = "";
-            lblVorstGevoelig.Content = "";
-            lblBladGrootteResult.Content = plantenDAO.GetAbiotiek();
+            lblType.Content = "Bezonning :";
+            lblFamilie.Content = "Grondsoort :";
+            lblGeslacht.Content = "Vochtbehoefte :";
+            lblSoort.Content = "Voedingsbehoefte :";
+            lblVariant.Content = "Antagonische omgeving :";
+            lblPlantdichtheidMax.Content = "Habitat :";
+            lblPlantdichtheidMin.Content = "";
+            lblLaatste.Content = "";
+            //lblBladGrootteResult.Content = plantenDAO.GetAbiotiek();
         }
         private void ChangeToBeheer()
         {
-            lblBladgrootte.Content = "";
-            lblBladvorm.Content = "";
-            lblRatio.Content = "";
-            lblBloeiwijze.Content = "";
-            lblHabitus.Content = "";
-            lblLevensvorm.Content = "";
-            lblGeurend.Content = "";
-            lblVorstGevoelig.Content = "";
+            lblType.Content = "";
+            lblFamilie.Content = "";
+            lblGeslacht.Content = "";
+            lblSoort.Content = "";
+            lblVariant.Content = "";
+            lblPlantdichtheidMax.Content = "";
+            lblPlantdichtheidMin.Content = "";
+            lblLaatste.Content = "";
         }
         private void ChangeToExtra()
         {
-            lblBladgrootte.Content = "Nectarwaarde :";
-            lblBladvorm.Content = "Pollenwaarde :";
-            lblRatio.Content = "Bijvriendelijk :";
-            lblBloeiwijze.Content = "Vlindervriendelijk :";
-            lblHabitus.Content = "Eetbaar :";
-            lblLevensvorm.Content = "Kruidgebruik :";
-            lblGeurend.Content = "Geurend :";
-            lblVorstGevoelig.Content = "Vorstgevoelig :";
+            lblType.Content = "Nectarwaarde :";
+            lblFamilie.Content = "Pollenwaarde :";
+            lblGeslacht.Content = "Bijvriendelijk :";
+            lblSoort.Content = "Vlindervriendelijk :";
+            lblVariant.Content = "Eetbaar :";
+            lblPlantdichtheidMax.Content = "Kruidgebruik :";
+            lblPlantdichtheidMin.Content = "Geurend :";
+            lblLaatste.Content = "Vorstgevoelig :";
         }
         private void ChangeToCommensalisme()
         {
-            lblBladgrootte.Content = "Ontwikkelingssnelheid :";
-            lblBladvorm.Content = "Strategie :";
-            lblRatio.Content = "Sociabiliteit :";
-            lblBloeiwijze.Content = "Levensvorm :";
-            lblHabitus.Content = "";
-            lblLevensvorm.Content = "";
-            lblGeurend.Content = "";
-            lblVorstGevoelig.Content = "";
+            lblType.Content = "Ontwikkelingssnelheid :";
+            lblFamilie.Content = "Strategie :";
+            lblGeslacht.Content = "Sociabiliteit :";
+            lblSoort.Content = "Levensvorm :";
+            lblVariant.Content = "";
+            lblPlantdichtheidMax.Content = "";
+            lblPlantdichtheidMin.Content = "";
+            lblLaatste.Content = "";
         }
     }
 }
