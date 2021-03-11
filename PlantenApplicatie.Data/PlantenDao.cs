@@ -132,7 +132,7 @@ namespace PlantenApplicatie.Data
 
         public string GetAbiotiek()
         {
-            return _context.AbioBezonning.Select(s => s.Id).ToString();
+            return _context.AbioBezonning.Select(s => s.Naam).ToString();
         }
     }
 }

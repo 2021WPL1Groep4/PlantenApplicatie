@@ -1,4 +1,5 @@
 ﻿using PlantenApplicatie.Data;
+using PlantenApplicatie.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace PlantenApplicatie
 {
     /// <summary>
@@ -19,16 +21,22 @@ namespace PlantenApplicatie
 
     public partial class PlantDetails : Window
     {
+       
         private PlantenDao plantenDAO;
+
+        private Plant plant;
         public PlantDetails()
         {
             InitializeComponent();
             plantenDAO = PlantenDao.Instance;
+            plant = (Plant)lblPlantnaam.Content;
+            
             Start();
         }
 
         private void Start()
         {
+            cmbEigenschappen.Items.Add("Plant");
             cmbEigenschappen.Items.Add("FenoType");
             cmbEigenschappen.Items.Add("Abiotiek");
             cmbEigenschappen.Items.Add("Beheer");
@@ -56,6 +64,10 @@ namespace PlantenApplicatie
 
             switch (comboboxText)
             {
+                case "Plant":
+                    lstLijst.Visibility = Visibility.Visible;
+                    ChangeToPlant();
+                    break;
                 case "FenoType":
                     lstLijst.Visibility = Visibility.Visible;
                     ChangeToFenotype();
@@ -85,6 +97,14 @@ namespace PlantenApplicatie
                 default:
                     break;
             }
+        }
+    
+
+        private void ChangeToPlant()
+        {
+            lblBladgrootte.Content = plant.Fgsv;
+       
+          
         }
         private void ChangeToFenotype()
         {
