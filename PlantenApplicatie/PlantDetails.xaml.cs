@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlantenApplicatie.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +19,11 @@ namespace PlantenApplicatie
 
     public partial class PlantDetails : Window
     {
+        private PlantenDao plantenDAO;
         public PlantDetails()
         {
             InitializeComponent();
+            plantenDAO = PlantenDao.Instance;
             Start();
         }
 
@@ -100,6 +103,8 @@ namespace PlantenApplicatie
             lblBloeiwijze.Content = "Voedingsbehoefte :";
             lblHabitus.Content = "Antagonische omgeving :";
             lblLevensvorm.Content = "";
+
+            lblBladGrootteResult.Content = plantenDAO.GetAbiotiek();
         }
         private void ChangeToBeheer()
         {
