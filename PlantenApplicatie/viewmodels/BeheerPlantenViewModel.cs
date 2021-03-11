@@ -120,11 +120,13 @@ namespace PlantenApplicatie.viewmodels
             plant = _selectedPlant;
             // initialiseer labels en waarden
             plantDetails.lblPlantnaamGroot.Content = _selectedPlant.Fgsv;
-            plantDetails.lblFamilie.Content = _selectedPlant.Familie;
-            plantDetails.lblType.Content = _selectedPlant.Type;
-            plantDetails.lblGeslacht.Content = _selectedPlant.Geslacht;
-            plantDetails.lblSoort.Content = _selectedPlant.Soort;
-            plantDetails.lblVariant.Content = _selectedPlant.Variant;
+            plantDetails.lblFamilieResult.Content = _selectedPlant.Familie;
+            plantDetails.lblTypeResult.Content = _selectedPlant.Type;
+            plantDetails.lblGeslachtResult.Content = _selectedPlant.Geslacht;
+            plantDetails.lblSoortResult.Content = _selectedPlant.Soort;
+            plantDetails.lblVariantResult.Content = _selectedPlant.Variant;
+            
+
 
             // toon plantdetails venster
             plantDetails.Show();

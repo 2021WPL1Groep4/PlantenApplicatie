@@ -47,6 +47,15 @@ namespace PlantenApplicatie
 
             cmbEigenschappen.SelectedIndex = 0;
 
+            lblType.Content = "Type :";
+            lblFamilie.Content = "Familie :";
+            lblGeslacht.Content = "Geslacht :";
+            lblSoort.Content = "Soort :";
+            lblVariant.Content = "Variant :";
+            lblPlantdichtheidMax.Content = "";
+            lblPlantdichtheidMin.Content = "";
+            lblLaatste.Content = "";
+
 
         }
 
