@@ -92,6 +92,8 @@ namespace PlantenApplicatie
             lblBloeiwijze.Content = "Bloeiwijze :";
             lblHabitus.Content = "Habitus :";
             lblLevensvorm.Content = "Levensvorm :";
+            lblGeurend.Content = "";
+            lblVorstGevoelig.Content = "";
         }
 
         private void ChangeToAbiotiek()
@@ -102,13 +104,21 @@ namespace PlantenApplicatie
             lblRatio.Content = "Vochtbehoefte :";
             lblBloeiwijze.Content = "Voedingsbehoefte :";
             lblHabitus.Content = "Antagonische omgeving :";
-            lblLevensvorm.Content = "";
-
+            lblLevensvorm.Content = "Habitat :";
+            lblGeurend.Content = "";
+            lblVorstGevoelig.Content = "";
             lblBladGrootteResult.Content = plantenDAO.GetAbiotiek();
         }
         private void ChangeToBeheer()
         {
-
+            lblBladgrootte.Content = "";
+            lblBladvorm.Content = "";
+            lblRatio.Content = "";
+            lblBloeiwijze.Content = "";
+            lblHabitus.Content = "";
+            lblLevensvorm.Content = "";
+            lblGeurend.Content = "";
+            lblVorstGevoelig.Content = "";
         }
         private void ChangeToExtra()
         {
@@ -118,7 +128,19 @@ namespace PlantenApplicatie
             lblBloeiwijze.Content = "Vlindervriendelijk :";
             lblHabitus.Content = "Eetbaar :";
             lblLevensvorm.Content = "Kruidgebruik :";
-
+            lblGeurend.Content = "Geurend :";
+            lblVorstGevoelig.Content = "Vorstgevoelig :";
+        }
+        private void ChangeToCommensalisme()
+        {
+            lblBladgrootte.Content = "Ontwikkelingssnelheid :";
+            lblBladvorm.Content = "Strategie :";
+            lblRatio.Content = "Sociabiliteit :";
+            lblBloeiwijze.Content = "Levensvorm :";
+            lblHabitus.Content = "";
+            lblLevensvorm.Content = "";
+            lblGeurend.Content = "";
+            lblVorstGevoelig.Content = "";
         }
     }
 }
