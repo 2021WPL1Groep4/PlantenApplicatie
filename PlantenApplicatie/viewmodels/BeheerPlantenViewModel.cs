@@ -25,7 +25,7 @@ namespace PlantenApplicatie.viewmodels
         // hiermee kunnen we de data opvragen aan de databank.
         public PlantenDao _plantenDao;
 
-        private Plant _selectedPlant;
+        public Plant _selectedPlant;
 
         public BeheerPlantenViewModel(PlantenDao plantenDao)
         {
@@ -109,21 +109,22 @@ namespace PlantenApplicatie.viewmodels
                 OnPropertyChanged();
             }
         }
-
+        public static Plant plant = new Plant();
         public void GetPlantDetails()
         {
+            
             // nieuw venster initialiseren
             PlantDetails plantDetails = new PlantDetails();
             // object Plant toewijzen door geselecteerd item uit listview te casten
             _selectedPlant = SelectedPlant;
-
+            plant = _selectedPlant;
             // initialiseer labels en waarden
-            //plantDetails.lblPlantnaam.Content = _selectedPlant.Fgsv;
-            //plantDetails.lblFamilie.Content = _selectedPlant.Familie;
-            //plantDetails.lblType.Content = _selectedPlant.Type;
-            //plantDetails.lblGeslacht.Content = _selectedPlant.Geslacht;
-            //plantDetails.lblSoort.Content = _selectedPlant.Soort;
-            //plantDetails.lblVariant.Content = _selectedPlant.Variant;
+            plantDetails.lblPlantnaamGroot.Content = _selectedPlant.Fgsv;
+            plantDetails.lblFamilie.Content = _selectedPlant.Familie;
+            plantDetails.lblType.Content = _selectedPlant.Type;
+            plantDetails.lblGeslacht.Content = _selectedPlant.Geslacht;
+            plantDetails.lblSoort.Content = _selectedPlant.Soort;
+            plantDetails.lblVariant.Content = _selectedPlant.Variant;
 
             // toon plantdetails venster
             plantDetails.Show();
