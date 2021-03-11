@@ -19,11 +19,14 @@ namespace PlantenApplicatie
     /// </summary>
     public partial class BeheerPlanten : Window
     {
+        private PlantenDao plantenDao;
         private BeheerPlantenViewModel beheerPlantenViewModel;
 
         public BeheerPlanten()
         {
             InitializeComponent();
+            plantenDao = PlantenDao.Instance;
+
             beheerPlantenViewModel = new BeheerPlantenViewModel(
                 PlantenDao.Instance);
             DataContext = beheerPlantenViewModel;
@@ -73,6 +76,15 @@ namespace PlantenApplicatie
             }
         }
 
+       
+
+        private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
+        {
+            PlantDetails plantDetails = new PlantDetails();
+            
+            plantDetails.Show();
+        }
+        */
         private void btnZoeken_Click(object sender, RoutedEventArgs e)
         {
             SearchPlanten();
@@ -85,21 +97,13 @@ namespace PlantenApplicatie
             var species = cmbSoort.SelectedValue is null ? null : cmbSoort.SelectedValue.ToString();
 
             var list = plantenDao.SearchByProperties(txtPlantnaam.Text,
-                family, genus,
-                species, txtVariant.Text);
+                null, null,
+                null, null);
 
             lvPlanten.ItemsSource = list;
 
-            ResetInputFields();
+           
         }
-
-        private void btnDetailsPlant_Click(object sender, RoutedEventArgs e)
-        {
-            PlantDetails plantDetails = new PlantDetails();
-            
-            plantDetails.Show();
-        }
-        */
     }
         
 }

@@ -93,7 +93,7 @@ namespace PlantenApplicatie
 
             lvPlanten.ItemsSource = list;
             
-            ResetInputFields();
+           
         }
     }
 }

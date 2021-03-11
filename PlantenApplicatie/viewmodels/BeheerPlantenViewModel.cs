@@ -55,6 +55,16 @@ namespace PlantenApplicatie.viewmodels
             }
         }
 
+        public void LoadPlantsByName(string name)
+        {
+            var plants = _plantenDao.SearchByProperties(name, null, null, null, null);
+            Plants.Clear();
+            foreach(var plant in plants)
+            {
+                Plants.Add(plant);
+            }
+        }
+
         public void LoadTypes()
         {
             var types = _plantenDao.GetTypes();
@@ -110,9 +120,6 @@ namespace PlantenApplicatie.viewmodels
         {
             // nieuw venster initialiseren
             PlantDetails plantDetails = new PlantDetails();
-            // object Plant toewijzen door geselecteerd item uit listview te casten
-            _selectedPlant = SelectedPlant;
-            
 
             // initialiseer labels en waarden
             plantDetails.lblPlantnaam.Content = _selectedPlant.Fgsv;
@@ -128,8 +135,10 @@ namespace PlantenApplicatie.viewmodels
 
         private void showPlantByName()
         {
+            string str = TextInput;
             _plantenDao.SearchPlantenByName(_plantenDao.GetPlanten(), TextInput);
-            LoadPlants();
+
+            LoadPlantsByName(TextInput);
         }
 
         public string TextInput
