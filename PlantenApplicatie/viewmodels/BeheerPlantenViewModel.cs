@@ -256,8 +256,18 @@ namespace PlantenApplicatie.viewmodels
 
         private void SearchPlanten()
         {
-            var list = _plantenDao.SearchByProperties(TextInputPlantName, SelectedType.Planttypenaam,
-                SelectedFamilie.Familienaam, SelectedGeslacht.Geslachtnaam, SelectedSoort.Soortnaam, SelectedVariant.Variantnaam);
+            
+            var type = SelectedType is null ? string.Empty : SelectedType.Planttypenaam;
+            var familie = SelectedFamilie is null ? string.Empty : SelectedFamilie.Familienaam;
+            var geslacht = SelectedGeslacht is null ? string.Empty : SelectedGeslacht.Geslachtnaam;
+            var soort = SelectedSoort is null ? string.Empty : SelectedSoort.Soortnaam;
+            var variant = SelectedVariant is null ? string.Empty : SelectedVariant.Variantnaam;
+
+
+                var list = _plantenDao.SearchByProperties(TextInputPlantName, type,
+                familie, geslacht, soort, variant);
+
+            
 
             //lvPlanten.ItemsSource = list;
 
