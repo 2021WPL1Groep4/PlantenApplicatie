@@ -26,9 +26,9 @@ namespace PlantenApplicatie.viewmodels
 
         public ObservableCollection<TfgsvType> Types { get; set; }
 
-        public ObservableCollection<TfgsvSoort> Soorten { get; set; }
+        public ObservableCollection<string> Soorten { get; set; }
         public ObservableCollection<string> Families { get; set; }
-        public ObservableCollection<TfgsvGeslacht> Genus { get; set; }
+        public ObservableCollection<string> Genus { get; set; }
 
         public ObservableCollection<TfgsvVariant> Variants { get; set; }
 
@@ -37,8 +37,8 @@ namespace PlantenApplicatie.viewmodels
 
         private Plant _selectedPlant;
         private TfgsvType _selectedType;
-        private TfgsvSoort _selectedSoort;
-        private TfgsvGeslacht _selectedGeslacht;
+        private string _selectedSoort;
+        private string _selectedGeslacht;
         private string _selectedFamilie;
         private TfgsvVariant _selectedVariant;
 
@@ -54,9 +54,9 @@ namespace PlantenApplicatie.viewmodels
 
             Plants = new ObservableCollection<Plant>();
             Types = new ObservableCollection<TfgsvType>();
-            Soorten = new ObservableCollection<TfgsvSoort>();
+            Soorten = new ObservableCollection<string>();
             Families = new ObservableCollection<string>();
-            Genus = new ObservableCollection<TfgsvGeslacht>();
+            Genus = new ObservableCollection<string>();
             Variants = new ObservableCollection<TfgsvVariant>();
 
             this._plantenDao = plantenDao;
@@ -85,7 +85,7 @@ namespace PlantenApplicatie.viewmodels
             }
         }
 
-        public TfgsvSoort SelectedSoort
+        public string SelectedSoort
         {
             get { return _selectedSoort; }
             set
@@ -94,7 +94,7 @@ namespace PlantenApplicatie.viewmodels
                 OnPropertyChanged();
             }
         }
-        public TfgsvGeslacht SelectedGeslacht
+        public string SelectedGeslacht
         {
             get { return _selectedGeslacht; }
             set
@@ -275,8 +275,8 @@ namespace PlantenApplicatie.viewmodels
             
             var type = SelectedType is null ? string.Empty : SelectedType.Planttypenaam;
             var familie = SelectedFamilie;
-            var geslacht = SelectedGeslacht is null ? string.Empty : SelectedGeslacht.Geslachtnaam;
-            var soort = SelectedSoort is null ? string.Empty : SelectedSoort.Soortnaam;
+            var geslacht = SelectedGeslacht;
+            var soort = SelectedSoort;
             var variant = SelectedVariant is null ? string.Empty : SelectedVariant.Variantnaam;
 
 
