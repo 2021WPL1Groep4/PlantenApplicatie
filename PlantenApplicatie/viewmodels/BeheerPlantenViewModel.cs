@@ -20,6 +20,8 @@ namespace PlantenApplicatie.viewmodels
 
         public ICommand searchPlantsCommand { get; set; }
 
+        public ICommand resetCommand { get; set; }
+
         public ObservableCollection<Plant> Plants { get; set; }
 
         public ObservableCollection<TfgsvType> Types { get; set; }
@@ -48,6 +50,7 @@ namespace PlantenApplicatie.viewmodels
             showPlantByNameCommand = new DelegateCommand(showPlantByName);
             showVariantByNameCommand = new DelegateCommand(showVariantByName);
             searchPlantsCommand = new DelegateCommand(SearchPlanten);
+            resetCommand = new DelegateCommand(Reset);
 
             Plants = new ObservableCollection<Plant>();
             Types = new ObservableCollection<TfgsvType>();
@@ -57,6 +60,17 @@ namespace PlantenApplicatie.viewmodels
             Variants = new ObservableCollection<TfgsvVariant>();
 
             this._plantenDao = plantenDao;
+        }
+
+        public void Reset()
+        {
+            textInputPlantName = string.Empty;
+
+            LoadTypes();
+            LoadSoorten();
+            LoadFamilies();
+            LoadGenus();
+            LoadVariants();
         }
 
 
