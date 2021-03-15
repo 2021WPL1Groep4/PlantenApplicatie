@@ -18,6 +18,8 @@ namespace PlantenApplicatie.viewmodels
 
         public ICommand showVariantByNameCommand { get; set; }
 
+        public ICommand showPlantsCommand { get; set; }
+
         public ObservableCollection<Plant> Plants { get; set; }
 
         public ObservableCollection<TfgsvType> Types { get; set; }
@@ -33,14 +35,20 @@ namespace PlantenApplicatie.viewmodels
 
         // dit stelt de huidige geselecteerde plant voor
         private Plant _selectedPlant;
+        private TfgsvType _selectedType;
+        private TfgsvSoort _selectedSoort;
+        private TfgsvGeslacht _selectedGeslacht;
+        private TfgsvFamilie _selectedFamilie;
 
-        private string textInput;
+        private string textInputPlantName;
+        private string textInputVariant;
 
         public BeheerPlantenViewModel(PlantenDao plantenDao)
         {
             showPlantDetailsCommand = new DelegateCommand(showPlantDetails);
             showPlantByNameCommand = new DelegateCommand(showPlantByName);
             showVariantByNameCommand = new DelegateCommand(showVariantByName);
+            showPlantsCommand = new DelegateCommand(SearchPlanten);
 
             Plants = new ObservableCollection<Plant>();
             Types = new ObservableCollection<TfgsvType>();
@@ -124,9 +132,9 @@ namespace PlantenApplicatie.viewmodels
 
         public void showVariantByName()
         {
-            _plantenDao.SearchPlantenByVariant(_plantenDao.GetPlanten(), TextInput);
+            _plantenDao.SearchPlantenByVariant(_plantenDao.GetPlanten(), TextInputVariant);
 
-            LoadPlantsByVariant(TextInput);
+            LoadPlantsByVariant(TextInputVariant);
         }
 
         public Plant SelectedPlant
@@ -139,6 +147,45 @@ namespace PlantenApplicatie.viewmodels
             }
         }
 
+        public TfgsvSoort SelectedSoort
+        {
+            get { return _selectedSoort; }
+            set
+            {
+                _selectedSoort = value;
+                OnPropertyChanged();
+            }
+        }
+        public TfgsvGeslacht SelectedGeslacht
+        {
+            get { return _selectedGeslacht; }
+            set
+            {
+                _selectedGeslacht = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public TfgsvType SelectedType
+        {
+            get { return _selectedType; }
+            set
+            {
+                _selectedType = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TfgsvFamilie SelectedFamilie
+        {
+            get { return _selectedFamilie; }
+            set
+            {
+                _selectedFamilie = value;
+                OnPropertyChanged();
+            }
+        }
 
         private void showPlantDetails()
         {
@@ -165,20 +212,48 @@ namespace PlantenApplicatie.viewmodels
         private void showPlantByName()
         {
             // string str = TextInput;
-            _plantenDao.SearchPlantenByName(_plantenDao.GetPlanten(), TextInput);
+            _plantenDao.SearchPlantenByName(_plantenDao.GetPlanten(), TextInputPlantName);
 
-            LoadPlantsByName(TextInput);
+            LoadPlantsByName(TextInputPlantName);
         }
 
-        public string TextInput
+        private void SearchPlanten()
+        {
+            var family = _selectedFamilie is null ? null : SelectedFamilie;
+            var genus = _selectedGeslacht is null ? null : SelectedGeslacht;
+            var species = SelectedSoort is null ? null : SelectedSoort;
+
+            var list = _plantenDao.SearchByProperties(TextInputPlantName,
+                null, null,
+                null, null);
+
+            //lvPlanten.ItemsSource = list;
+
+
+        }
+
+        public string TextInputPlantName
         {
             get
             {
-                return textInput;
+                return textInputPlantName;
             }
             set
             {
-                textInput = value;
+                textInputPlantName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string TextInputVariant
+        {
+            get
+            {
+                return textInputVariant;
+            }
+            set
+            {
+                textInputVariant = value;
                 OnPropertyChanged();
             }
         }

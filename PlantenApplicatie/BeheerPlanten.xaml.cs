@@ -84,7 +84,7 @@ namespace PlantenApplicatie
             
             plantDetails.Show();
         }
-        */
+        
         private void btnZoeken_Click(object sender, RoutedEventArgs e)
         {
             SearchPlanten();
@@ -104,6 +104,8 @@ namespace PlantenApplicatie
 
            
         }
+        
+         */
     }
         
 }
