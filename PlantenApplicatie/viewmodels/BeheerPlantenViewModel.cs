@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -141,19 +142,24 @@ namespace PlantenApplicatie.viewmodels
 
         private void showPlantDetails()
         {
-            // nieuw venster initialiseren
-            PlantDetails plantDetails = new PlantDetails();
+            if (_selectedPlant != null)
+            {
+                // nieuw venster initialiseren
+                PlantDetails plantDetails = new PlantDetails();
 
-            // initialiseer labels en waarden
-            plantDetails.lblPlantnaam.Content = _selectedPlant.Fgsv;
-            plantDetails.lblFamilie.Content = _selectedPlant.Familie;
-            plantDetails.lblType.Content = _selectedPlant.Type;
-            plantDetails.lblGeslacht.Content = _selectedPlant.Geslacht;
-            plantDetails.lblSoort.Content = _selectedPlant.Soort;
-            plantDetails.lblVariant.Content = _selectedPlant.Variant;
+                // initialiseer labels en waarden
+                plantDetails.lblPlantnaam.Content = _selectedPlant.Fgsv;
+                plantDetails.lblFamilie.Content = _selectedPlant.Familie;
+                plantDetails.lblType.Content = _selectedPlant.Type;
+                plantDetails.lblGeslacht.Content = _selectedPlant.Geslacht;
+                plantDetails.lblSoort.Content = _selectedPlant.Soort;
+                plantDetails.lblVariant.Content = _selectedPlant.Variant;
 
-            // toon plantdetails venster
-            plantDetails.Show();
+                // toon plantdetails venster
+                plantDetails.Show();
+            } else { 
+                MessageBox.Show("Gelieve een plant te selecteren uit de listview", "Fout", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void showPlantByName()
