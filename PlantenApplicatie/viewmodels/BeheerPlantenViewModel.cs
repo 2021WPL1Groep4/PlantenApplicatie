@@ -27,7 +27,7 @@ namespace PlantenApplicatie.viewmodels
         public ObservableCollection<TfgsvType> Types { get; set; }
 
         public ObservableCollection<TfgsvSoort> Soorten { get; set; }
-        public ObservableCollection<TfgsvFamilie> Families { get; set; }
+        public ObservableCollection<string> Families { get; set; }
         public ObservableCollection<TfgsvGeslacht> Genus { get; set; }
 
         public ObservableCollection<TfgsvVariant> Variants { get; set; }
@@ -39,7 +39,7 @@ namespace PlantenApplicatie.viewmodels
         private TfgsvType _selectedType;
         private TfgsvSoort _selectedSoort;
         private TfgsvGeslacht _selectedGeslacht;
-        private TfgsvFamilie _selectedFamilie;
+        private string _selectedFamilie;
         private TfgsvVariant _selectedVariant;
 
         private string textInputPlantName;
@@ -55,7 +55,7 @@ namespace PlantenApplicatie.viewmodels
             Plants = new ObservableCollection<Plant>();
             Types = new ObservableCollection<TfgsvType>();
             Soorten = new ObservableCollection<TfgsvSoort>();
-            Families = new ObservableCollection<TfgsvFamilie>();
+            Families = new ObservableCollection<string>();
             Genus = new ObservableCollection<TfgsvGeslacht>();
             Variants = new ObservableCollection<TfgsvVariant>();
 
@@ -115,7 +115,7 @@ namespace PlantenApplicatie.viewmodels
             }
         }
 
-        public TfgsvFamilie SelectedFamilie
+        public string SelectedFamilie
         {
             get { return _selectedFamilie; }
             set
@@ -193,7 +193,9 @@ namespace PlantenApplicatie.viewmodels
         public void LoadFamilies()
         {
             var families = _plantenDao.GetUniqueFamilyNames();
+            
             Families.Clear();
+
             foreach (var familie in families)
             {
                 Families.Add(familie);
@@ -272,7 +274,7 @@ namespace PlantenApplicatie.viewmodels
         {
             
             var type = SelectedType is null ? string.Empty : SelectedType.Planttypenaam;
-            var familie = SelectedFamilie is null ? string.Empty : SelectedFamilie.Familienaam;
+            var familie = SelectedFamilie;
             var geslacht = SelectedGeslacht is null ? string.Empty : SelectedGeslacht.Geslachtnaam;
             var soort = SelectedSoort is null ? string.Empty : SelectedSoort.Soortnaam;
             var variant = SelectedVariant is null ? string.Empty : SelectedVariant.Variantnaam;

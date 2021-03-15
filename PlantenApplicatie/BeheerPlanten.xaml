@@ -23,7 +23,7 @@
                                     </TextBox.InputBindings>
                                 </TextBox>
                                 <Label Canvas.Top="0" Canvas.Left="350" Content="Familie :"/>
-                                <ComboBox SelectedValue="{Binding SelectedFamilie, UpdateSourceTrigger=PropertyChanged}" x:Name="cmbFamilie" Canvas.Top="5" Canvas.Left="450" Width="200"  ItemsSource="{Binding Families }" DisplayMemberPath="Familienaam" />
+                                <ComboBox SelectedValue="{Binding SelectedFamilie, UpdateSourceTrigger=PropertyChanged}" x:Name="cmbFamilie" Canvas.Top="5" Canvas.Left="450" Width="200"  ItemsSource="{Binding Families }" />
                                 <!-- tweede rij -->
                                 <Label Content="Type :" Canvas.Top="30" />
                                 <ComboBox SelectedValue="{Binding SelectedType}" x:Name="cmbType" Width="200" Canvas.Top="35" Canvas.Left="80" ItemsSource="{Binding Types }" DisplayMemberPath="Planttypenaam" />

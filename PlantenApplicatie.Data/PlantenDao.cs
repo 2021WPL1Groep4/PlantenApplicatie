@@ -122,30 +122,30 @@ namespace PlantenApplicatie.Data
                 .ToList();
         }
 
-        public List<TfgsvFamilie> GetUniqueFamilyNames()
+        public List<string> GetUniqueFamilyNames()
         {
-            //return _context.TfgsvFamilie.Select(f => f.Familienaam).Distinct().ToList();
-            return _context.TfgsvFamilie.OrderBy(f => f.Familienaam).Distinct().ToList();
+            return _context.TfgsvFamilie.Select(f => f.Familienaam).Distinct().OrderBy(familienaam => familienaam).ToList();
+                       
         }
 
         public List<TfgsvGeslacht> GetUniqueGenusNames()
         {
-            return _context.TfgsvGeslacht.OrderBy(g => g.Geslachtnaam).Distinct().ToList();
+            return _context.TfgsvGeslacht.OrderBy(g => g.Geslachtnaam).ToList();
         }
 
         public List<TfgsvSoort> GetUniqueSpeciesNames()
         {
-            return _context.TfgsvSoort.OrderBy(s => s.Soortnaam).Distinct().ToList();
+            return _context.TfgsvSoort.OrderBy(s => s.Soortnaam).ToList();
         }
 
         public List<TfgsvVariant> GetUniqueVariantNames()
         {
-            return _context.TfgsvVariant.OrderBy(v => v.Variantnaam).Distinct().ToList();
+            return _context.TfgsvVariant.OrderBy(v => v.Variantnaam).ToList();
         }
 
         public List<TfgsvType> GetTypes()
         {
-            return _context.TfgsvType.ToList();
+            return _context.TfgsvType.OrderBy(o => o.Planttypenaam).ToList();
         }
     }
 }
