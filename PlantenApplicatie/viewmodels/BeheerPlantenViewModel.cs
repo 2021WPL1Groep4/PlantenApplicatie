@@ -15,6 +15,8 @@ namespace PlantenApplicatie.viewmodels
         public ICommand showPlantDetailsCommand { get; set; }
         public ICommand showPlantByNameCommand { get; set; }
 
+        public ICommand showVariantByNameCommand { get; set; }
+
         public ObservableCollection<Plant> Plants { get; set; }
 
         public ObservableCollection<TfgsvType> Types { get; set; }
@@ -22,6 +24,8 @@ namespace PlantenApplicatie.viewmodels
         public ObservableCollection<string> Soorten { get; set; }
         public ObservableCollection<string> Families { get; set; }
         public ObservableCollection<string> Genus { get; set; }
+
+        public ObservableCollection<TfgsvVariant> Variants { get; set; }
 
         // hiermee kunnen we de data opvragen aan de databank.
         public PlantenDao _plantenDao;
@@ -35,12 +39,14 @@ namespace PlantenApplicatie.viewmodels
         {
             showPlantDetailsCommand = new DelegateCommand(showPlantDetails);
             showPlantByNameCommand = new DelegateCommand(showPlantByName);
+            showVariantByNameCommand = new DelegateCommand(showVariantByName);
 
             Plants = new ObservableCollection<Plant>();
             Types = new ObservableCollection<TfgsvType>();
             Soorten = new ObservableCollection<string>();
             Families = new ObservableCollection<string>();
             Genus = new ObservableCollection<string>();
+            Variants = new ObservableCollection<TfgsvVariant>();
 
             this._plantenDao = plantenDao;
         }
@@ -105,6 +111,23 @@ namespace PlantenApplicatie.viewmodels
             }
         }
 
+        public void LoadPlantsByVariant(string variant)
+        {
+            var plants = _plantenDao.SearchByProperties(null, null, null, null, variant);
+            Plants.Clear();
+            foreach (var plant in plants)
+            {
+                Plants.Add(plant);
+            }
+        }
+
+        public void showVariantByName()
+        {
+            _plantenDao.SearchPlantenByVariant(_plantenDao.GetPlanten(), TextInput);
+
+            LoadPlantsByVariant(TextInput);
+        }
+
         public Plant SelectedPlant
         {
             get { return _selectedPlant; }
@@ -135,7 +158,7 @@ namespace PlantenApplicatie.viewmodels
 
         private void showPlantByName()
         {
-            string str = TextInput;
+            // string str = TextInput;
             _plantenDao.SearchPlantenByName(_plantenDao.GetPlanten(), TextInput);
 
             LoadPlantsByName(TextInput);

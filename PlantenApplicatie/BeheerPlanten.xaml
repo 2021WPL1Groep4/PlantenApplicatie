@@ -36,8 +36,13 @@
                                 <Label Content="Variant :" Canvas.Top="60" Canvas.Left="350" />
                                 <!-- vierde rij-->
                                 <Button x:Name="btnZoeken" Content="Zoeken" Canvas.Top="97" Width="80" Canvas.Left="878" Click="btnZoeken_Click" />
-                                <TextBox x:Name="txtVariant" Height="19" Canvas.Left="450" Canvas.Top="68" Text="Typ een variantnaam" TextWrapping="Wrap" Width="123" />
-                                <Label Canvas.Top="95" Content="Naam:"/>
+                                <TextBox x:Name="txtVariant" Height="19" Canvas.Left="450" Canvas.Top="68"  Width="200" 
+                                         Text="{Binding Path=TextInput, UpdateSourceTrigger=PropertyChanged}">
+                                    <TextBox.InputBindings>
+                                        <KeyBinding Command="{Binding Path=showVariantByNameCommand}" Key="Enter" />
+                                    </TextBox.InputBindings>
+                                </TextBox>
+                                    <Label Canvas.Top="95" Content="Naam:"/>
                                 <TextBox x:Name="txtNLNaam" Width="200" Canvas.Top="99" Canvas.Left="80" Text="Typ de nederlandse naam"   />
                             </Canvas>
                         </GroupBox>
