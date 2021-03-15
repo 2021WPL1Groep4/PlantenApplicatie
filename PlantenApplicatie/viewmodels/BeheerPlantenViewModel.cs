@@ -64,7 +64,7 @@ namespace PlantenApplicatie.viewmodels
 
         public void Reset()
         {
-            textInputPlantName = string.Empty;
+            TextInputPlantName = string.Empty;
 
             LoadTypes();
             LoadSoorten();
