@@ -148,7 +148,7 @@ namespace PlantenApplicatie.viewmodels
 
         public void LoadPlantsByName(string name)
         {
-            var plants = _plantenDao.SearchByProperties(name, null, null, null, null);
+            var plants = _plantenDao.SearchByProperties(name, null, null, null, null, null);
             Plants.Clear();
             foreach(var plant in plants)
             {
@@ -208,7 +208,7 @@ namespace PlantenApplicatie.viewmodels
 
         public void LoadPlantsByVariant(string variant)
         {
-            var plants = _plantenDao.SearchByProperties(null, null, null, null, variant);
+            var plants = _plantenDao.SearchByProperties(null, null, null, null, null, variant);
             Plants.Clear();
             foreach (var plant in plants)
             {
@@ -256,7 +256,7 @@ namespace PlantenApplicatie.viewmodels
 
         private void SearchPlanten()
         {
-            var list = _plantenDao.SearchByProperties(TextInputPlantName,
+            var list = _plantenDao.SearchByProperties(TextInputPlantName, SelectedType.Planttypenaam,
                 SelectedFamilie.Familienaam, SelectedGeslacht.Geslachtnaam, SelectedSoort.Soortnaam, SelectedVariant.Variantnaam);
 
             //lvPlanten.ItemsSource = list;
