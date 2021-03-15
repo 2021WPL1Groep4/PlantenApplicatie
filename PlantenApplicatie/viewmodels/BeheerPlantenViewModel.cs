@@ -256,10 +256,11 @@ namespace PlantenApplicatie.viewmodels
 
         private void SearchPlanten()
         {
-            var list = _plantenDao.SearchByProperties(null,
-                SelectedFamilie.Familienaam, null, null, null);
+            var list = _plantenDao.SearchByProperties(TextInputPlantName,
+                SelectedFamilie.Familienaam, SelectedGeslacht.Geslachtnaam, SelectedSoort.Soortnaam, SelectedVariant.Variantnaam);
 
             //lvPlanten.ItemsSource = list;
+
 
             Plants.Clear();
             foreach (var plant in list)

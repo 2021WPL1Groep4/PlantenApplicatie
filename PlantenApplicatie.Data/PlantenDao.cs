@@ -26,12 +26,14 @@ namespace PlantenApplicatie.Data
             return _context.Plant.ToList();
         }
 
-        public List<Plant> SearchByProperties(string name, string family, 
+        public List<Plant> SearchByProperties(string name,string type, string family, 
             string genus, string species, string variant)
         {
             var planten = GetPlanten();
 
+            
             planten = SearchPlantenByName(planten, name);
+            planten = SearchPlantenByType(planten, type);
             planten = SearchPlantenByFamily(planten, family);
             planten = SearchPlantenByGenus(planten, genus);
             planten = SearchPlantenBySpecies(planten, species);
@@ -53,7 +55,17 @@ namespace PlantenApplicatie.Data
                         .Contains(PlantenParser.ParseSearchText(name)))
                 .ToList();
         }
+        public List<Plant> SearchPlantenByType(List<Plant> planten , string type)
+        {
+            if(string.IsNullOrEmpty(type))
+            {
+                return planten;
+            }
 
+            return planten.Where(p => p.Type is not null && PlantenParser.ParseSearchText(p.Type).Contains(PlantenParser.ParseSearchText(type))).ToList();
+
+         
+        }
         public List<Plant> SearchPlantenByFamily(List<Plant> planten, string family)
         {
             if (string.IsNullOrEmpty(family))
