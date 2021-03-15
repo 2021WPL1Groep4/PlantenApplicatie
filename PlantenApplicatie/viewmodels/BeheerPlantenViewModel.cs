@@ -18,47 +18,123 @@ namespace PlantenApplicatie.viewmodels
 
         public ICommand showVariantByNameCommand { get; set; }
 
-        public ICommand showPlantsCommand { get; set; }
+        public ICommand searchPlantsCommand { get; set; }
 
         public ObservableCollection<Plant> Plants { get; set; }
 
         public ObservableCollection<TfgsvType> Types { get; set; }
 
-        public ObservableCollection<string> Soorten { get; set; }
-        public ObservableCollection<string> Families { get; set; }
-        public ObservableCollection<string> Genus { get; set; }
+        public ObservableCollection<TfgsvSoort> Soorten { get; set; }
+        public ObservableCollection<TfgsvFamilie> Families { get; set; }
+        public ObservableCollection<TfgsvGeslacht> Genus { get; set; }
 
         public ObservableCollection<TfgsvVariant> Variants { get; set; }
 
         // hiermee kunnen we de data opvragen aan de databank.
         public PlantenDao _plantenDao;
 
-        // dit stelt de huidige geselecteerde plant voor
         private Plant _selectedPlant;
         private TfgsvType _selectedType;
         private TfgsvSoort _selectedSoort;
         private TfgsvGeslacht _selectedGeslacht;
         private TfgsvFamilie _selectedFamilie;
+        private TfgsvVariant _selectedVariant;
 
         private string textInputPlantName;
-        private string textInputVariant;
 
         public BeheerPlantenViewModel(PlantenDao plantenDao)
         {
             showPlantDetailsCommand = new DelegateCommand(showPlantDetails);
             showPlantByNameCommand = new DelegateCommand(showPlantByName);
             showVariantByNameCommand = new DelegateCommand(showVariantByName);
-            showPlantsCommand = new DelegateCommand(SearchPlanten);
+            searchPlantsCommand = new DelegateCommand(SearchPlanten);
 
             Plants = new ObservableCollection<Plant>();
             Types = new ObservableCollection<TfgsvType>();
-            Soorten = new ObservableCollection<string>();
-            Families = new ObservableCollection<string>();
-            Genus = new ObservableCollection<string>();
+            Soorten = new ObservableCollection<TfgsvSoort>();
+            Families = new ObservableCollection<TfgsvFamilie>();
+            Genus = new ObservableCollection<TfgsvGeslacht>();
             Variants = new ObservableCollection<TfgsvVariant>();
 
             this._plantenDao = plantenDao;
         }
+
+
+        #region geselecteerde properties getters and setters
+        public Plant SelectedPlant
+        {
+            get { return _selectedPlant; }
+            set
+            {
+                _selectedPlant = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TfgsvSoort SelectedSoort
+        {
+            get { return _selectedSoort; }
+            set
+            {
+                _selectedSoort = value;
+                OnPropertyChanged();
+            }
+        }
+        public TfgsvGeslacht SelectedGeslacht
+        {
+            get { return _selectedGeslacht; }
+            set
+            {
+                _selectedGeslacht = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public TfgsvType SelectedType
+        {
+            get { return _selectedType; }
+            set
+            {
+                _selectedType = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TfgsvFamilie SelectedFamilie
+        {
+            get { return _selectedFamilie; }
+            set
+            {
+                _selectedFamilie = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TfgsvVariant SelectedVariant
+        {
+            get { return _selectedVariant; }
+            set
+            {
+                _selectedVariant = value;
+                OnPropertyChanged();
+            }
+
+        }
+
+        public string TextInputPlantName
+        {
+            get
+            {
+                return textInputPlantName;
+            }
+            set
+            {
+                textInputPlantName = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
 
         public void LoadPlants()
         {
@@ -120,6 +196,16 @@ namespace PlantenApplicatie.viewmodels
             }
         }
 
+        public void LoadVariants()
+        {
+            var variants = _plantenDao.GetUniqueVariantNames();
+            Variants.Clear();
+            foreach (var v in variants)
+            {
+                Variants.Add(v);
+            }
+        }
+
         public void LoadPlantsByVariant(string variant)
         {
             var plants = _plantenDao.SearchByProperties(null, null, null, null, variant);
@@ -132,60 +218,11 @@ namespace PlantenApplicatie.viewmodels
 
         public void showVariantByName()
         {
-            _plantenDao.SearchPlantenByVariant(_plantenDao.GetPlanten(), TextInputVariant);
+            _plantenDao.SearchPlantenByVariant(_plantenDao.GetPlanten(), SelectedVariant.Variantnaam);
 
-            LoadPlantsByVariant(TextInputVariant);
+            LoadPlantsByVariant(SelectedVariant.Variantnaam);
         }
 
-        public Plant SelectedPlant
-        {
-            get { return _selectedPlant; }
-            set
-            {
-                _selectedPlant = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public TfgsvSoort SelectedSoort
-        {
-            get { return _selectedSoort; }
-            set
-            {
-                _selectedSoort = value;
-                OnPropertyChanged();
-            }
-        }
-        public TfgsvGeslacht SelectedGeslacht
-        {
-            get { return _selectedGeslacht; }
-            set
-            {
-                _selectedGeslacht = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        public TfgsvType SelectedType
-        {
-            get { return _selectedType; }
-            set
-            {
-                _selectedType = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public TfgsvFamilie SelectedFamilie
-        {
-            get { return _selectedFamilie; }
-            set
-            {
-                _selectedFamilie = value;
-                OnPropertyChanged();
-            }
-        }
 
         private void showPlantDetails()
         {
@@ -219,42 +256,15 @@ namespace PlantenApplicatie.viewmodels
 
         private void SearchPlanten()
         {
-            var family = _selectedFamilie is null ? null : SelectedFamilie;
-            var genus = _selectedGeslacht is null ? null : SelectedGeslacht;
-            var species = SelectedSoort is null ? null : SelectedSoort;
-
-            var list = _plantenDao.SearchByProperties(TextInputPlantName,
-                null, null,
-                null, null);
+            var list = _plantenDao.SearchByProperties(null,
+                SelectedFamilie.Familienaam, null, null, null);
 
             //lvPlanten.ItemsSource = list;
 
-
-        }
-
-        public string TextInputPlantName
-        {
-            get
+            Plants.Clear();
+            foreach (var plant in list)
             {
-                return textInputPlantName;
-            }
-            set
-            {
-                textInputPlantName = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string TextInputVariant
-        {
-            get
-            {
-                return textInputVariant;
-            }
-            set
-            {
-                textInputVariant = value;
-                OnPropertyChanged();
+                Plants.Add(plant);
             }
         }
     }

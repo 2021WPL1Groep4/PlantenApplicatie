@@ -35,6 +35,7 @@ namespace PlantenApplicatie
             beheerPlantenViewModel.LoadSoorten();
             beheerPlantenViewModel.LoadFamilies();
             beheerPlantenViewModel.LoadGenus();
+            beheerPlantenViewModel.LoadVariants();
 
 
         }
