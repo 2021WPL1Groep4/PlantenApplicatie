@@ -257,7 +257,7 @@ namespace PlantenApplicatie.viewmodels
         private void SearchPlanten()
         {
             var list = _plantenDao.SearchByProperties(null,
-                SelectedFamilie.Familienaam, null, null, null);
+                   SelectedFamilie.Familienaam, null, null, null);
 
             //lvPlanten.ItemsSource = list;
 
