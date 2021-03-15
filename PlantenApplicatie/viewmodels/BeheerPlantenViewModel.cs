@@ -24,23 +24,23 @@ namespace PlantenApplicatie.viewmodels
 
         public ObservableCollection<Plant> Plants { get; set; }
 
-        public ObservableCollection<TfgsvType> Types { get; set; }
+        public ObservableCollection<string> Types { get; set; }
 
         public ObservableCollection<TfgsvSoort> Soorten { get; set; }
         public ObservableCollection<string> Families { get; set; }
         public ObservableCollection<TfgsvGeslacht> Genus { get; set; }
 
-        public ObservableCollection<TfgsvVariant> Variants { get; set; }
+        public ObservableCollection<string> Variants { get; set; }
 
         // hiermee kunnen we de data opvragen aan de databank.
         public PlantenDao _plantenDao;
 
         private Plant _selectedPlant;
-        private TfgsvType _selectedType;
+        private string _selectedType;
         private TfgsvSoort _selectedSoort;
         private TfgsvGeslacht _selectedGeslacht;
         private string _selectedFamilie;
-        private TfgsvVariant _selectedVariant;
+        private string _selectedVariant;
 
         private string textInputPlantName;
 
@@ -53,11 +53,11 @@ namespace PlantenApplicatie.viewmodels
             resetCommand = new DelegateCommand(Reset);
 
             Plants = new ObservableCollection<Plant>();
-            Types = new ObservableCollection<TfgsvType>();
+            Types = new ObservableCollection<string>();
             Soorten = new ObservableCollection<TfgsvSoort>();
             Families = new ObservableCollection<string>();
             Genus = new ObservableCollection<TfgsvGeslacht>();
-            Variants = new ObservableCollection<TfgsvVariant>();
+            Variants = new ObservableCollection<string>();
 
             this._plantenDao = plantenDao;
         }
@@ -105,7 +105,7 @@ namespace PlantenApplicatie.viewmodels
         }
 
 
-        public TfgsvType SelectedType
+        public string SelectedType
         {
             get { return _selectedType; }
             set
@@ -125,7 +125,7 @@ namespace PlantenApplicatie.viewmodels
             }
         }
 
-        public TfgsvVariant SelectedVariant
+        public string SelectedVariant
         {
             get { return _selectedVariant; }
             set
@@ -234,9 +234,9 @@ namespace PlantenApplicatie.viewmodels
 
         public void showVariantByName()
         {
-            _plantenDao.SearchPlantenByVariant(_plantenDao.GetPlanten(), SelectedVariant.Variantnaam);
+            _plantenDao.SearchPlantenByVariant(_plantenDao.GetPlanten(), SelectedVariant);
 
-            LoadPlantsByVariant(SelectedVariant.Variantnaam);
+            LoadPlantsByVariant(SelectedVariant);
         }
 
 
@@ -273,11 +273,11 @@ namespace PlantenApplicatie.viewmodels
         private void SearchPlanten()
         {
             
-            var type = SelectedType is null ? string.Empty : SelectedType.Planttypenaam;
+            var type = SelectedType ;
             var familie = SelectedFamilie;
             var geslacht = SelectedGeslacht is null ? string.Empty : SelectedGeslacht.Geslachtnaam;
             var soort = SelectedSoort is null ? string.Empty : SelectedSoort.Soortnaam;
-            var variant = SelectedVariant is null ? string.Empty : SelectedVariant.Variantnaam;
+            var variant = SelectedVariant;
 
 
                 var list = _plantenDao.SearchByProperties(TextInputPlantName, type,

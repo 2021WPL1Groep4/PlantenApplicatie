@@ -138,14 +138,14 @@ namespace PlantenApplicatie.Data
             return _context.TfgsvSoort.OrderBy(s => s.Soortnaam).ToList();
         }
 
-        public List<TfgsvVariant> GetUniqueVariantNames()
+        public List<string> GetUniqueVariantNames()
         {
-            return _context.TfgsvVariant.OrderBy(v => v.Variantnaam).ToList();
+            return _context.TfgsvVariant.Select(v => v.Variantnaam).Distinct().OrderBy(variantnaam => variantnaam).ToList();
         }
 
-        public List<TfgsvType> GetTypes()
+        public List<string> GetTypes()
         {
-            return _context.TfgsvType.OrderBy(o => o.Planttypenaam).ToList();
+            return _context.TfgsvType.Select(t => t.Planttypenaam).Distinct().OrderBy(typenaam => typenaam).ToList();
         }
     }
 }
